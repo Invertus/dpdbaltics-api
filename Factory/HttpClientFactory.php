@@ -2,7 +2,7 @@
 
 namespace dpdGroupBalticsApi\Factory;
 
-use DPDGroupApi\Config\DPDGroupApiConfig;
+use dpdGroupBalticsApi\Api\Configuration\ApiConfigInterface;
 use GuzzleHttp\Client;
 
 /**
@@ -20,9 +20,9 @@ class HttpClientFactory
     /**
      * HttpClientFactory constructor.
      *
-     * @param DPDGroupApiConfig $config
+     * @param ApiConfigInterface $config
      */
-    public function __construct(DPDGroupApiConfig $config)
+    public function __construct(ApiConfigInterface $config)
     {
         $this->config = $config;
     }
