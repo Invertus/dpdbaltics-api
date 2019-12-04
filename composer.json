@@ -1,0 +1,19 @@
+{
+    "name": "dpdGroupBalticsApi",
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    },
+    "authors": [
+        {
+            "name": "Invertus",
+            "email": "developers@invertus.eu"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "facebook/webdriver": "dev-master",
+        "squizlabs/php_codesniffer": "*"
+    }
+}
