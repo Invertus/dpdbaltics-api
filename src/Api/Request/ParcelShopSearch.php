@@ -1,5 +1,8 @@
 <?php
+
 namespace Invertus\dpdBalticsApi\Api\Request;
+
+use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 
 class ParcelShopSearch
@@ -17,6 +20,11 @@ class ParcelShopSearch
         $this->apiRequest = $apiRequest;
     }
 
+    /**
+     * @param $request
+     * @return mixed
+     * @throws Exception
+     */
     public function parcelShopSearch($request)
     {
         $response = $this->apiRequest->post(
@@ -26,7 +34,8 @@ class ParcelShopSearch
                 'verify' => false,
             ]
         );
-        $responseBody = json_decode($response->getBody()->getContents());
+        $responseBody = json_decode($response->getBody()->getContents(), false);
+
         return $responseBody;
     }
 }

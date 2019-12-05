@@ -25,6 +25,7 @@
 
 namespace Invertus\dpdBalticsApi\Api;
 
+use Exception;
 use Invertus\dpdBalticsApi\Factory\HttpClientFactory;
 
 class ApiRequest
@@ -59,11 +60,19 @@ class ApiRequest
             $response = $this->clientFactory->getClient()->post($url, $params);
 
             return $response ?: [];
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw $exception;
         }
     }
 
+    /**
+     * API Request Get Method.
+     *
+     * @param $url
+     * @param array $params
+     * @return array
+     * @throws Exception
+     */
     public function get($url, $params = [])
     {
         $response = null;

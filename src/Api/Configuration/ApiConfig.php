@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Invertus\dpdBalticsApi\Api\Configuration;
 
 class ApiConfig implements ApiConfigInterface

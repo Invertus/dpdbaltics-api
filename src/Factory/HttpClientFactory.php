@@ -7,13 +7,11 @@ use GuzzleHttp\Client;
 
 /**
  * Class HttpClientFactory
- *
- * @package Invertus\ViaBill\Factory
  */
 class HttpClientFactory
 {
     /**
-     * Config Variable Declaration.
+     * Config Declaration.
      */
     private $config;
 
