@@ -1,2 +1,4 @@
 /tests/Unit/.env
 /vendor
+composer.lock
+.php_cs.cache
