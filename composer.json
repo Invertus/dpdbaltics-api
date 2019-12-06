@@ -1,0 +1,28 @@
+{
+  "name": "invertus/dpdBalticsApi",
+  "config": {
+    "platform": {
+      "php": "5.6"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Invertus\\dpdBalticsApi\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Invertus",
+      "email": "developers@invertus.eu"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "vlucas/phpdotenv": "^3.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "facebook/webdriver": "dev-master",
+    "squizlabs/php_codesniffer": "*"
+  }
+}
