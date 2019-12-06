@@ -27,7 +27,7 @@ class ParcelShopSearch
     public function parcelShopSearch($request)
     {
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SERVICE_QUERY,
+            DPDGroupApiConfig::SQ_PARCEL_SHOP_SEARCH,
             [
                 'query' => $request,
                 'verify' => false,
