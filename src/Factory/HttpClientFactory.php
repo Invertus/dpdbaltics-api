@@ -17,7 +17,6 @@ class HttpClientFactory
 
     /**
      * HttpClientFactory constructor.
-     *
      * @param ApiConfigInterface $config
      */
     public function __construct(ApiConfigInterface $config)
@@ -37,10 +36,7 @@ class HttpClientFactory
             'defaults' => [
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',
-                    'character-encoding' => 'UTF-8',
-                    'Accept' => '*/*',
-                    'Cache-Control' => 'no-cache',
-                    'accept-encoding' => 'gzip, deflate'
+                    'character-encoding' => 'UTF-8'
                 ]
             ],
         ];
