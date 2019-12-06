@@ -18,19 +18,13 @@ class ParcelShopSearchTest extends TestCase
 
     private function getRequest($username, $password)
     {
-
         return [
             'username' => $username,
             'password' => $password,
             'id' => 'LV10080',
-//            'company' => '',
-//            'street' => '',
-//            'city' => '',
             'country' => 'LV',
-//            'pcode' => '',
             'fetchGsPUDOpoint' => '1',
             'retrieveOpeningHours' => '1',
-
         ];
     }
 }
