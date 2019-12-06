@@ -4,11 +4,10 @@ namespace Invertus\dpdBalticsApi\Api\Request;
 
 use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
+use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
 
 class ParcelShopSearch
 {
-
-    const SERVICE_QUERY = '/ws-mapper-rest/parcelShopSearch_';
 
     /**
      * @var ApiRequest
@@ -28,7 +27,7 @@ class ParcelShopSearch
     public function parcelShopSearch($request)
     {
         $response = $this->apiRequest->post(
-            self::SERVICE_QUERY,
+            DPDGroupApiConfig::SERVICE_QUERY,
             [
                 'query' => $request,
                 'verify' => false,
