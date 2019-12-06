@@ -2,13 +2,13 @@
 
 namespace Invertus\dpdBalticsApi\Api\Configuration;
 
+use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+
 class ApiConfig implements ApiConfigInterface
 {
-    const SERVICE_QUERY = 'https://lv.integration.dpd.eo.pl';
 
     public function getUrl()
     {
-        return self::SERVICE_QUERY;
-        // TODO: Implement getUrl() method.
+        return DPDGroupApiConfig::TEST_URL_LV;
     }
 }
