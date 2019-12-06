@@ -1,5 +1,6 @@
 <?php
 
+use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelShopSearchRequest;
 use Invertus\dpdBalticsApi\Factory\ParcelShopSearchFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -10,21 +11,17 @@ class ParcelShopSearchTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
-        $requestBody = $this->getRequest($username, $password);
+        $countryIso = 'LV';
+        $requestBody = $this->createRequest($username, $password, $countryIso);
         $parcelShopSearch = ParcelShopSearchFactory::createParcelShopSearch();
         $responseBody = $parcelShopSearch->parcelShopSearch($requestBody);
         $this->assertEquals($responseBody->status, 'ok');
     }
 
-    private function getRequest($username, $password)
+    private function createRequest($username, $password, $countryIso)
     {
-        return [
-            'username' => $username,
-            'password' => $password,
-            'id' => 'LV10080',
-            'country' => 'LV',
-            'fetchGsPUDOpoint' => '1',
-            'retrieveOpeningHours' => '1',
-        ];
+        $parcelShopSearchRequest = new ParcelShopSearchRequest($username, $password, $countryIso);
+
+        return $parcelShopSearchRequest;
     }
 }
