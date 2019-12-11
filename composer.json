@@ -1,13 +1,13 @@
 {
   "name": "invertus/dpdBalticsApi",
-  "autoload": {
-    "psr-4": {
-      "Invertus\\dpdBalticsApi\\": "src/"
-    }
-  },
   "config": {
     "platform": {
       "php": "5.6"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Invertus\\dpdBalticsApi\\": "src/"
     }
   },
   "authors": [
