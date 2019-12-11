@@ -2,31 +2,88 @@
 
 namespace Invertus\dpdBalticsApi\Api\DTO\Object;
 
+use Invertus\dpdBalticsApi\Api\DTP\Object\OpeningHours;
 use JsonSerializable;
 
 class ParcelShop implements JsonSerializable
 {
+    /**
+     * @var string
+     */
     private $parcelShopId;
+
+    /**
+     * @var string
+     */
     private $company;
+
+    /**
+     * @var string
+     */
     private $country;
+
+    /**
+     * @var string
+     */
     private $city;
+
+    /**
+     * @var string
+     */
     private $pCode;
+
+    /**
+     * @var string
+     */
     private $street;
+
+    /**
+     * @var string
+     */
     private $email;
+
+    /**
+     * @var string
+     */
     private $phone;
+
+    /**
+     * @var float
+     */
     private $distance;
+
+    /**
+     * @var float
+     */
     private $longitude;
+
+    /**
+     * @var float
+     */
     private $latitude;
+
+    /**
+     * @var float
+     */
     private $coordinateX;
+
+    /**
+     * @var float
+     */
     private $coordinateY;
+
+    /**
+     * @var float
+     */
     private $coordinateZ;
+
     /**
      * @var OpeningHours
      */
     private $openingHours;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getParcelShopId()
     {
@@ -34,7 +91,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $parcelShopId
+     * @param string $parcelShopId
      */
     public function setParcelShopId($parcelShopId)
     {
@@ -42,7 +99,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCompany()
     {
@@ -50,7 +107,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $company
+     * @param string $company
      */
     public function setCompany($company)
     {
@@ -58,7 +115,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCountry()
     {
@@ -66,7 +123,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $country
+     * @param string $country
      */
     public function setCountry($country)
     {
@@ -74,7 +131,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCity()
     {
@@ -82,7 +139,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $city
+     * @param string $city
      */
     public function setCity($city)
     {
@@ -90,7 +147,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPCode()
     {
@@ -98,7 +155,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $pCode
+     * @param string $pCode
      */
     public function setPCode($pCode)
     {
@@ -106,7 +163,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getStreet()
     {
@@ -114,7 +171,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $street
+     * @param string $street
      */
     public function setStreet($street)
     {
@@ -122,7 +179,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEmail()
     {
@@ -130,7 +187,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
     public function setEmail($email)
     {
@@ -138,7 +195,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPhone()
     {
@@ -146,7 +203,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $phone
+     * @param string $phone
      */
     public function setPhone($phone)
     {
@@ -154,7 +211,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getDistance()
     {
@@ -162,7 +219,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $distance
+     * @param float $distance
      */
     public function setDistance($distance)
     {
@@ -170,7 +227,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getLongitude()
     {
@@ -178,7 +235,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $longitude
+     * @param float $longitude
      */
     public function setLongitude($longitude)
     {
@@ -186,7 +243,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getLatitude()
     {
@@ -194,7 +251,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $latitude
+     * @param float $latitude
      */
     public function setLatitude($latitude)
     {
@@ -202,7 +259,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getCoordinateX()
     {
@@ -210,7 +267,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $coordinateX
+     * @param float $coordinateX
      */
     public function setCoordinateX($coordinateX)
     {
@@ -218,7 +275,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getCoordinateY()
     {
@@ -226,7 +283,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $coordinateY
+     * @param float $coordinateY
      */
     public function setCoordinateY($coordinateY)
     {
@@ -234,7 +291,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getCoordinateZ()
     {
@@ -242,7 +299,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param mixed $coordinateZ
+     * @param float $coordinateZ
      */
     public function setCoordinateZ($coordinateZ)
     {
@@ -266,11 +323,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @return array
      */
     public function jsonSerialize()
     {

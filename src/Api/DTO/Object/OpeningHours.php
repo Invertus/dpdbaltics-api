@@ -6,15 +6,41 @@ namespace Invertus\dpdBalticsApi\Api\DTP\Object;
 
 use JsonSerializable;
 
-class OpeningHours
+class OpeningHours implements JsonSerializable
 {
-
+    /**
+     * @var string
+     */
     private $weekDay;
+
+    /**
+     * @var string
+     */
     private $openMorning;
+
+    /**
+     * @var string
+     */
     private $closeMorning;
+
+    /**
+     * @var string
+     */
     private $closeAfternoon;
+
+    /**
+     * @var string
+     */
     private $openAfternoon;
 
+    /**
+     * OpeningHours constructor.
+     * @param $weekDay
+     * @param $openMorning
+     * @param $closeMorning
+     * @param $closeAfternoon
+     * @param $openAfternoon
+     */
     public function __construct($weekDay, $openMorning, $closeMorning, $closeAfternoon, $openAfternoon)
     {
         $this->weekDay = $weekDay;
@@ -25,7 +51,7 @@ class OpeningHours
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getWeekDay()
     {
@@ -33,7 +59,7 @@ class OpeningHours
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOpenMorning()
     {
@@ -41,7 +67,7 @@ class OpeningHours
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCloseMorning()
     {
@@ -49,7 +75,7 @@ class OpeningHours
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCloseAfternoon()
     {
@@ -57,7 +83,7 @@ class OpeningHours
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOpenAfternoon()
     {
@@ -65,20 +91,16 @@ class OpeningHours
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @return array
      */
     public function jsonSerialize()
     {
         return [
-            "weekday" => $this->weekDay,
-            "openMorning" => $this->openMorning,
-            "closeMorning" => $this->closeMorning,
-            "closeAfternoon" => $this->closeAfternoon,
-            "openAfternoon" => $this->closeAfternoon
+            'weekday' => $this->weekDay,
+            'openMorning' => $this->openMorning,
+            'closeMorning' => $this->closeMorning,
+            'closeAfternoon' => $this->closeAfternoon,
+            'openAfternoon' => $this->closeAfternoon
         ];
     }
 }

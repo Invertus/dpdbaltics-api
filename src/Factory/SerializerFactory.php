@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Invertus\dpdBalticsApi\Factory;
-
 
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -12,12 +10,13 @@ use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class SerializerFactory implements ISerializeFactory
+class SerializerFactory implements SerializeFactoryInterface
 {
     /**
      * @var Serializer
      */
     private $serializer;
+
     /**
      * @var ObjectNormalizer
      */

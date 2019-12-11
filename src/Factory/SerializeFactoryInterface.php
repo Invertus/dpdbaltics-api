@@ -4,12 +4,12 @@
 namespace Invertus\dpdBalticsApi\Factory;
 
 
-Interface ISerializeFactory
+Interface SerializeFactoryInterface
 {
     /**
      * Create serializer and normalizer
      *
-     * ISerializeFactory constructor.
+     * SerializeFactoryInterface constructor.
      */
     public function __construct();
 
@@ -22,7 +22,9 @@ Interface ISerializeFactory
     public function serialize($object);
 
     /**
-     * Deserialize any format to object
+     * Deserialize any format(JSON,XML,...) to object
+     * To deserialize object needs to have getters and setters with comments that tells what is inserted or returned
+     * @Example @param ParcelShop[] $parcelShops
      *
      * @param $responseObject
      * @param $className
