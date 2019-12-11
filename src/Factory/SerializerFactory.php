@@ -47,13 +47,12 @@ class SerializerFactory implements ISerializeFactory
     /**
      * Deserialize json to object
      *
-     * @param $object
+     * @param $responseObject
      * @param $className
      * @return array|object
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
-    public function deserialize($object, $className)
+    public function deserialize($responseObject, $className)
     {
-        return $this->normalizer->denormalize(json_decode($object), $className);
+        return $this->normalizer->denormalize(json_decode($responseObject), $className);
     }
 }

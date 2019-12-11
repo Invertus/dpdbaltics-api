@@ -24,9 +24,9 @@ Interface ISerializeFactory
     /**
      * Deserialize any format to object
      *
-     * @param $object
+     * @param $responseObject
      * @param $className
      * @return mixed
      */
-    public function deserialize($object, $className);
+    public function deserialize($responseObject, $className);
 }
