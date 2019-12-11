@@ -2,7 +2,7 @@
 
 namespace Invertus\dpdBalticsApi\Api\DTO\Response;
 
-use Invertus\dpdBalticsApi\Api\DTP\Object\ParcelShop;
+use Invertus\dpdBalticsApi\Api\DTO\Object\ParcelShop;
 use JsonSerializable;
 
 class ParcelShopSearchResponse implements JsonSerializable
@@ -11,7 +11,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     private $status;
     private $errLog;
     /**
-     * @var ParcelShop[]
+     * @param ParcelShop[]
      */
     private $parcelShops = [];
 
@@ -48,7 +48,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @return ParcelShop
+     * @return ParcelShop[]
      */
     public function getParcelShops()
     {
@@ -56,22 +56,13 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @param ParcelShopSearchResponse $parcelShops
+     * @param ParcelShop[] $parcelShops
      */
-    public function setParcelShops(ParcelShop $parcelShops)
+    public function setParcelShops(array $parcelShops)
     {
         $this->parcelShops = $parcelShops;
     }
 
-    public function addParcelShops(ParcelShop $parcelShop)
-    {
-        $this->parcelShops[] = $parcelShop;
-    }
-
-    public function hasParcelShops()
-    {
-        return count($this->parcelShops) > 0;
-    }
     /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php

@@ -15,7 +15,7 @@ class ParcelShopSearchTest extends TestCase
         $requestBody = $this->createRequest($username, $password, $countryIso);
         $parcelShopSearch = ParcelShopSearchFactory::createParcelShopSearch();
         $responseBody = $parcelShopSearch->parcelShopSearch($requestBody);
-        $this->assertEquals($responseBody->status, 'ok');
+        $this->assertEquals($responseBody->getStatus(), 'ok');
     }
 
     private function createRequest($username, $password, $countryIso)

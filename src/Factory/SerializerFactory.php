@@ -4,37 +4,56 @@
 namespace Invertus\dpdBalticsApi\Factory;
 
 
+use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class SerializerFactory
+class SerializerFactory implements ISerializeFactory
 {
-    public $serializer;
+    /**
+     * @var Serializer
+     */
+    private $serializer;
+    /**
+     * @var ObjectNormalizer
+     */
+    private $normalizer;
 
     public function __construct()
     {
-//        $encoders = [new XmlEncoder(), new JsonEncoder()];
-//        $normalizers = [new ObjectNormalizer(null, null, null, new ReflectionExtractor()), new ArrayDenormalizer()];
-//
-//        $this->serializer = new Serializer($normalizers, $encoders);
-
         $normalizer = new ObjectNormalizer(null, null, null, new ReflectionExtractor());
-        $this->serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+        $this->serializer = new Serializer([new DateTimeNormalizer(), $normalizer, new ArrayDenormalizer()]);
+
+        $extractor = new PropertyInfoExtractor([], [new PhpDocExtractor(), new ReflectionExtractor()]);
+        $this->normalizer = new ObjectNormalizer(null, null, null, $extractor);
+        $this->normalizer->setSerializer($this->serializer);
     }
 
+    /**
+     * Serialize object to json
+     *
+     * @param $object
+     * @return bool|float|int|string
+     */
     public function serialize($object)
     {
         return $this->serializer->serialize($object, 'json');
     }
 
+    /**
+     * Deserialize json to object
+     *
+     * @param $object
+     * @param $className
+     * @return array|object
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     */
     public function deserialize($object, $className)
     {
-        return $this->serializer->denormalize(json_decode($object), $className);
+        return $this->normalizer->denormalize(json_decode($object), $className);
     }
 }

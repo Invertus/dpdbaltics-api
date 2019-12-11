@@ -1,12 +1,11 @@
 <?php
 
-namespace Invertus\dpdBalticsApi\Api\DTP\Object;
+namespace Invertus\dpdBalticsApi\Api\DTO\Object;
 
 use JsonSerializable;
 
-class ParcelShop
+class ParcelShop implements JsonSerializable
 {
-
     private $parcelShopId;
     private $company;
     private $country;
@@ -25,40 +24,6 @@ class ParcelShop
      * @var OpeningHours
      */
     private $openingHours;
-
-    public function __construct(
-        $parcelShopId,
-        $company,
-        $country,
-        $city,
-        $pCode,
-        $street,
-        $email,
-        $phone,
-        $distance,
-        $longitude,
-        $latitude,
-        $coordinateX,
-        $coordinateY,
-        $coordinateZ,
-        OpeningHours $openingHours = null
-    ) {
-        $this->parcelShopId = $parcelShopId;
-        $this->company = $company;
-        $this->country = $country;
-        $this->city = $city;
-        $this->pCode = $pCode;
-        $this->street = $street;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->distance = $distance;
-        $this->longitude = $longitude;
-        $this->latitude = $latitude;
-        $this->coordinateX = $coordinateX;
-        $this->coordinateY = $coordinateY;
-        $this->coordinateZ = $coordinateZ;
-        $this->openingHours = $openingHours;
-    }
 
     /**
      * @return mixed

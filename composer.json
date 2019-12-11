@@ -5,6 +5,11 @@
       "Invertus\\dpdBalticsApi\\": "src/"
     }
   },
+  "config": {
+    "platform": {
+      "php": "5.6"
+    }
+  },
   "authors": [
     {
       "name": "Invertus",
@@ -14,12 +19,13 @@
   "require": {
     "php": ">=5.6",
     "vlucas/phpdotenv": "^3.6",
-    "symfony/serializer": "^4.4",
-    "symfony/property-access": "^4.4",
-    "symfony/property-info": "^4.4"
+    "symfony/serializer": "*",
+    "symfony/property-access": "*",
+    "symfony/property-info": "*",
+    "ext-json": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.3",
+    "phpunit/phpunit": "*",
     "facebook/webdriver": "dev-master",
     "squizlabs/php_codesniffer": "*"
   }
