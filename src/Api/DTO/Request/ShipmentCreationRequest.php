@@ -129,27 +129,11 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
      * @return string
      */
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 
     /**
@@ -161,27 +145,11 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $name1
-     */
-    public function setName1($name1)
-    {
-        $this->name1 = $name1;
-    }
-
-    /**
      * @return string
      */
     public function getStreet()
     {
         return $this->street;
-    }
-
-    /**
-     * @param string $street
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
     }
 
     /**
@@ -193,27 +161,11 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $city
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-    }
-
-    /**
      * @return string
      */
     public function getCountry()
     {
         return $this->country;
-    }
-
-    /**
-     * @param string $country
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
     }
 
     /**
@@ -225,27 +177,11 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $pcode
-     */
-    public function setPcode($pcode)
-    {
-        $this->pcode = $pcode;
-    }
-
-    /**
      * @return string
      */
     public function getNumOfParcel()
     {
         return $this->numOfParcel;
-    }
-
-    /**
-     * @param string $numOfParcel
-     */
-    public function setNumOfParcel($numOfParcel)
-    {
-        $this->numOfParcel = $numOfParcel;
     }
 
     /**
@@ -257,27 +193,11 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $parcel_type
-     */
-    public function setparcel_type($parcel_type)
-    {
-        $this->parcel_type = $parcel_type;
-    }
-
-    /**
      * @return string
      */
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
     }
 
     /**
@@ -289,14 +209,6 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param bool $fetchGsPUDOpoint
-     */
-    public function setFetchGsPUDOpoint($fetchGsPUDOpoint)
-    {
-        $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
-    }
-
-    /**
      * @return string
      */
     public function getParcelShopId()
@@ -305,12 +217,181 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param string $parcelShopId
+     * @return mixed
      */
-    public function setParcelShopId($parcelShopId)
+    public function getName2()
     {
-        $this->parcelShopId = $parcelShopId;
+        return $this->name2;
     }
+
+    /**
+     * @param mixed $name2
+     */
+    public function setName2($name2)
+    {
+        $this->name2 = $name2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
+     * @param mixed $weight
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdmSmsNumber()
+    {
+        return $this->idmSmsNumber;
+    }
+
+    /**
+     * @param mixed $idmSmsNumber
+     */
+    public function setIdmSmsNumber($idmSmsNumber)
+    {
+        $this->idmSmsNumber = $idmSmsNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNumber()
+    {
+        return $this->orderNumber;
+    }
+
+    /**
+     * @param mixed $orderNumber
+     */
+    public function setOrderNumber($orderNumber)
+    {
+        $this->orderNumber = $orderNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNumber1()
+    {
+        return $this->orderNumber1;
+    }
+
+    /**
+     * @param mixed $orderNumber1
+     */
+    public function setOrderNumber1($orderNumber1)
+    {
+        $this->orderNumber1 = $orderNumber1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNumber2()
+    {
+        return $this->orderNumber2;
+    }
+
+    /**
+     * @param mixed $orderNumber2
+     */
+    public function setOrderNumber2($orderNumber2)
+    {
+        $this->orderNumber2 = $orderNumber2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderNumber3()
+    {
+        return $this->orderNumber3;
+    }
+
+    /**
+     * @param mixed $orderNumber3
+     */
+    public function setOrderNumber3($orderNumber3)
+    {
+        $this->orderNumber3 = $orderNumber3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParcelNumber()
+    {
+        return $this->parcelNumber;
+    }
+
+    /**
+     * @param mixed $parcelNumber
+     */
+    public function setParcelNumber($parcelNumber)
+    {
+        $this->parcelNumber = $parcelNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRemark()
+    {
+        return $this->remark;
+    }
+
+    /**
+     * @param mixed $remark
+     */
+    public function setRemark($remark)
+    {
+        $this->remark = $remark;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodAmount()
+    {
+        return $this->codAmount;
+    }
+
+    /**
+     * @param mixed $codAmount
+     */
+    public function setCodAmount($codAmount)
+    {
+        $this->codAmount = $codAmount;
+    }
+
 
     public function jsonSerialize()
     {
