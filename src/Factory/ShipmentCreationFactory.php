@@ -9,7 +9,12 @@ use Invertus\dpdBalticsApi\Api\Request\ShipmentCreation;
 
 class ShipmentCreationFactory
 {
-    public static function createParcelShopSearch()
+    /**
+     *
+     *
+     * @return ShipmentCreation
+     */
+    public static function makeShipmentCreation()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);

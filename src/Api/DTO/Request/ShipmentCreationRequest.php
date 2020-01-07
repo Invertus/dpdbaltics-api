@@ -45,14 +45,14 @@ class ShipmentCreationRequest implements JsonSerializable
     private $pcode;
 
     /**
-     * @var string
+     * @var int
      */
     private $numOfParcel;
 
     /**
      * @var string
      */
-    private $parcel_type;
+    private $parcelType;
 
     /**
      * @var string
@@ -69,27 +69,100 @@ class ShipmentCreationRequest implements JsonSerializable
      */
     private $parcelShopId;
 
+    /**
+     * @var string
+     */
     private $name2;
 
+    /**
+     * @var float
+     */
     private $weight;
 
+    /**
+     * @var string
+     */
     private $idmSmsNumber;
 
+    /**
+     * @var string
+     */
     private $email;
 
+    /**
+     * @var string
+     */
     private $orderNumber;
 
+    /**
+     * @var string
+     */
     private $orderNumber1;
 
+    /**
+     * @var string
+     */
     private $orderNumber2;
 
+    /**
+     * @var string
+     */
     private $orderNumber3;
 
+    /**
+     * @var string
+     */
     private $parcelNumber;
 
+    /**
+     * @var string
+     */
     private $remark;
 
+    /**
+     * @var string
+     */
     private $codAmount;
+
+    /**
+     * @var string
+     */
+    private $codPurpose;
+
+    /**
+     * @var string
+     */
+    private $idCheckId;
+
+    /**
+     * @var string
+     */
+    private $idCheckName;
+
+    /**
+     * @var string
+     */
+    private $dnoteReference;
+
+    /**
+     * @var string
+     */
+    private $predict;
+
+    /**
+     * @var string
+     */
+    private $timeFrameFrom;
+
+    /**
+     * @var string
+     */
+    private $timeFrameTo;
+
+    /**
+     * @var string
+     */
+    private $shipmentId;
 
     public function __construct(
         $username,
@@ -100,7 +173,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $country,
         $pcode,
         $numOfParcel,
-        $parcel_type,
+        $parcelType,
         $phone,
         $fetchGsPUDOpoint,
         $parcelShopId
@@ -114,7 +187,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $this->country = $country;
         $this->pcode = $pcode;
         $this->numOfParcel = $numOfParcel;
-        $this->parcel_type = $parcel_type;
+        $this->parcelType = $parcelType;
         $this->phone = $phone;
         $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
         $this->parcelShopId = $parcelShopId;
@@ -187,9 +260,9 @@ class ShipmentCreationRequest implements JsonSerializable
     /**
      * @return string
      */
-    public function getparcel_type()
+    public function getParcelType()
     {
-        return $this->parcel_type;
+        return $this->parcelType;
     }
 
     /**
@@ -217,7 +290,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName2()
     {
@@ -225,7 +298,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $name2
+     * @param string $name2
      */
     public function setName2($name2)
     {
@@ -233,7 +306,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getWeight()
     {
@@ -241,7 +314,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $weight
+     * @param string $weight
      */
     public function setWeight($weight)
     {
@@ -249,7 +322,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIdmSmsNumber()
     {
@@ -257,7 +330,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $idmSmsNumber
+     * @param string $idmSmsNumber
      */
     public function setIdmSmsNumber($idmSmsNumber)
     {
@@ -265,7 +338,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEmail()
     {
@@ -273,7 +346,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
     public function setEmail($email)
     {
@@ -281,7 +354,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOrderNumber()
     {
@@ -289,7 +362,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $orderNumber
+     * @param string $orderNumber
      */
     public function setOrderNumber($orderNumber)
     {
@@ -297,7 +370,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOrderNumber1()
     {
@@ -305,7 +378,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $orderNumber1
+     * @param string $orderNumber1
      */
     public function setOrderNumber1($orderNumber1)
     {
@@ -313,7 +386,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOrderNumber2()
     {
@@ -321,7 +394,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $orderNumber2
+     * @param string $orderNumber2
      */
     public function setOrderNumber2($orderNumber2)
     {
@@ -329,7 +402,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOrderNumber3()
     {
@@ -337,7 +410,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $orderNumber3
+     * @param string $orderNumber3
      */
     public function setOrderNumber3($orderNumber3)
     {
@@ -345,7 +418,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getParcelNumber()
     {
@@ -353,7 +426,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $parcelNumber
+     * @param string $parcelNumber
      */
     public function setParcelNumber($parcelNumber)
     {
@@ -361,7 +434,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRemark()
     {
@@ -369,7 +442,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $remark
+     * @param string $remark
      */
     public function setRemark($remark)
     {
@@ -377,7 +450,7 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCodAmount()
     {
@@ -385,11 +458,139 @@ class ShipmentCreationRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $codAmount
+     * @param string $codAmount
      */
     public function setCodAmount($codAmount)
     {
         $this->codAmount = $codAmount;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCodPurpose()
+    {
+        return $this->codPurpose;
+    }
+
+    /**
+     * @param string $codPurpose
+     */
+    public function setCodPurpose($codPurpose)
+    {
+        $this->codPurpose = $codPurpose;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdCheckId()
+    {
+        return $this->idCheckId;
+    }
+
+    /**
+     * @param string $idCheckId
+     */
+    public function setIdCheckId($idCheckId)
+    {
+        $this->idCheckId = $idCheckId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIdCheckName()
+    {
+        return $this->idCheckName;
+    }
+
+    /**
+     * @param string $idCheckName
+     */
+    public function setIdCheckName($idCheckName)
+    {
+        $this->idCheckName = $idCheckName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDnoteReference()
+    {
+        return $this->dnoteReference;
+    }
+
+    /**
+     * @param string $dnoteReference
+     */
+    public function setDnoteReference($dnoteReference)
+    {
+        $this->dnoteReference = $dnoteReference;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPredict()
+    {
+        return $this->predict;
+    }
+
+    /**
+     * @param string $predict
+     */
+    public function setPredict($predict)
+    {
+        $this->predict = $predict;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeFrameFrom()
+    {
+        return $this->timeFrameFrom;
+    }
+
+    /**
+     * @param string $timeFrameFrom
+     */
+    public function setTimeFrameFrom($timeFrameFrom)
+    {
+        $this->timeFrameFrom = $timeFrameFrom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeFrameTo()
+    {
+        return $this->timeFrameTo;
+    }
+
+    /**
+     * @param string $timeFrameTo
+     */
+    public function setTimeFrameTo($timeFrameTo)
+    {
+        $this->timeFrameTo = $timeFrameTo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShipmentId()
+    {
+        return $this->shipmentId;
+    }
+
+    /**
+     * @param string $shipmentId
+     */
+    public function setShipmentId($shipmentId)
+    {
+        $this->shipmentId = $shipmentId;
     }
 
 
@@ -404,10 +605,29 @@ class ShipmentCreationRequest implements JsonSerializable
             'country' => $this->country,
             'pcode' => $this->pcode,
             'numOfParcel' => $this->numOfParcel,
-            'parcel_type' => $this->parcel_type,
+            'parcel_type' => $this->parcelType,
             'phone' => $this->phone,
             'fetchGsPUDOpoint' => $this->fetchGsPUDOpoint,
-            'parcelShopId' => $this->parcelShopId,
+            'parcelshop_id' => $this->parcelShopId,
+            'name2' => $this->getName2(),
+            'weight' => $this->getWeight(),
+            'idm_sms_number' => $this->getIdmSmsNumber(),
+            'email' => $this->getEmail(),
+            'order_number' => $this->getOrderNumber(),
+            'order_number1' => $this->getOrderNumber1(),
+            'order_number2' => $this->getOrderNumber2(),
+            'order_number3' => $this->getOrderNumber3(),
+            'parcel_number' => $this->getParcelNumber(),
+            'remark' => $this->getRemark(),
+            'cod_amount' => $this->getCodAmount(),
+            'cod_purpose' => $this->getCodPurpose(),
+            'id_check_id' => $this->idCheckId,
+            'id_check_name' => $this->idCheckName,
+            'dnote_reference' => $this->getDnoteReference(),
+            'predict' => $this->getPredict(),
+            'timeframe_from' => $this->getTimeFrameFrom(),
+            'timeframe_to' => $this->getTimeFrameTo(),
+            'shipment_id' => $this->getShipmentId(),
         ];
     }
 }

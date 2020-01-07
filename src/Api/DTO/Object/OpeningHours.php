@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Invertus\dpdBalticsApi\Api\DTP\Object;
+namespace Invertus\dpdBalticsApi\Api\DTO\Object;
 
 
 use JsonSerializable;

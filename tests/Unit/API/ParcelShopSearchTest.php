@@ -13,7 +13,7 @@ class ParcelShopSearchTest extends TestCase
         $password = getenv('DPD_PASSWORD');
         $countryIso = 'LV';
         $requestBody = $this->createParcelShopSearchRequest($username, $password, $countryIso);
-        $parcelShopSearch = ParcelShopSearchFactory::createParcelShopSearch();
+        $parcelShopSearch = ParcelShopSearchFactory::makeParcelShopSearch();
         $responseBody = $parcelShopSearch->parcelShopSearch($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }

@@ -8,7 +8,7 @@ use Invertus\dpdBalticsApi\Api\Request\ParcelShopSearch;
 
 class ParcelShopSearchFactory
 {
-    public static function createParcelShopSearch()
+    public static function makeParcelShopSearch()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);

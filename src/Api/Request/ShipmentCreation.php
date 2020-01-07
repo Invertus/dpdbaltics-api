@@ -24,9 +24,8 @@ class ShipmentCreation
     }
 
     /**
-     * @param $request
-     * @return mixed
-     * @throws Exception
+     * @param ShipmentCreationRequest $request
+     * @return array|object
      * @throws \Exception
      */
     public function createShipment(ShipmentCreationRequest $request)

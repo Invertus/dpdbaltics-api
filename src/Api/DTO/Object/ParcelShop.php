@@ -2,7 +2,6 @@
 
 namespace Invertus\dpdBalticsApi\Api\DTO\Object;
 
-use Invertus\dpdBalticsApi\Api\DTP\Object\OpeningHours;
 use JsonSerializable;
 
 class ParcelShop implements JsonSerializable

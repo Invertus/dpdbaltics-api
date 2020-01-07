@@ -7,13 +7,23 @@ use JsonSerializable;
 
 class ShipmentCreationResponse implements JsonSerializable
 {
-
+    /**
+     * @var string
+     */
     private $status;
+
+    /**
+     * @var string
+     */
     private $errLog;
+
+    /**
+     * @var string
+     */
     private $pl_number;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getStatus()
     {
@@ -21,7 +31,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @param mixed $status
+     * @param string $status
      */
     public function setStatus($status)
     {
@@ -29,7 +39,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getErrLog()
     {
@@ -37,7 +47,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @param mixed $errLog
+     * @param string $errLog
      */
     public function setErrLog($errLog)
     {
@@ -45,7 +55,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPlNumber()
     {
@@ -53,7 +63,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @param mixed $pl_number
+     * @param string $pl_number
      */
     public function setPlNumber($pl_number)
     {
@@ -61,7 +71,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @return array|mixed
+     * @return array
      */
     public function jsonSerialize()
     {
