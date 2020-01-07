@@ -1,7 +1,7 @@
 <?php
 
 use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelShopSearchRequest;
-use Invertus\dpdBalticsApi\Factory\ParcelShopSearchFactory;
+use Invertus\dpdBalticsApi\Factory\APIRequest\ParcelShopSearchFactory;
 use PHPUnit\Framework\TestCase;
 
 class ParcelShopSearchTest extends TestCase

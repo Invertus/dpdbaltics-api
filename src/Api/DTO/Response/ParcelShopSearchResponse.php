@@ -77,9 +77,9 @@ class ParcelShopSearchResponse implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'status' => $this->status,
-            'errlog' => $this->errLog,
-            'parcelshops' => $this->parcelShops,
+            'status' => $this->getStatus(),
+            'errlog' => $this->getErrLog(),
+            'parcelshops' => $this->getParcelShops(),
         ];
     }
 }

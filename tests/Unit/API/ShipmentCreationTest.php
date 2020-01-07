@@ -1,9 +1,7 @@
 <?php
 
-use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelShopSearchRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
-use Invertus\dpdBalticsApi\Factory\ParcelShopSearchFactory;
-use Invertus\dpdBalticsApi\Factory\ShipmentCreationFactory;
+use Invertus\dpdBalticsApi\Factory\APIRequest\ShipmentCreationFactory;
 use PHPUnit\Framework\TestCase;
 
 class ShipmentCreationTest extends TestCase

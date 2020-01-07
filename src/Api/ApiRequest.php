@@ -3,7 +3,7 @@
 namespace Invertus\dpdBalticsApi\Api;
 
 use Exception;
-use Invertus\dpdBalticsApi\Factory\HttpClientFactory;
+use Invertus\dpdBalticsApi\Factory\APIRequest\HttpClientFactory;
 
 class ApiRequest
 {
