@@ -164,6 +164,21 @@ class ShipmentCreationRequest implements JsonSerializable
      */
     private $shipmentId;
 
+    /**
+     * ShipmentCreationRequest constructor.
+     * @param $username
+     * @param $password
+     * @param $name1
+     * @param $street
+     * @param $city
+     * @param $country
+     * @param $pcode
+     * @param $numOfParcel
+     * @param $parcelType
+     * @param $phone
+     * @param $fetchGsPUDOpoint
+     * @param $parcelShopId
+     */
     public function __construct(
         $username,
         $password,
@@ -593,7 +608,9 @@ class ShipmentCreationRequest implements JsonSerializable
         $this->shipmentId = $shipmentId;
     }
 
-
+    /**
+     * @return array
+     */
     public function jsonSerialize()
     {
         return [

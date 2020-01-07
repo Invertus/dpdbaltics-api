@@ -6,17 +6,64 @@ use JsonSerializable;
 
 class ParcelShopSearchRequest implements JsonSerializable
 {
+    /**
+     * @var string
+     */
     private $username;
+
+    /**
+     * @var string
+     */
     private $password;
+
+    /**
+     * @var string
+     */
     private $parcelShopId;
+
+    /**
+     * @var string
+     */
     private $company;
+
+    /**
+     * @var string
+     */
     private $street;
+
+    /**
+     * @var string
+     */
     private $city;
+
+    /**
+     * @var string
+     */
     private $country;
+
+    /**
+     * @var string
+     */
     private $pCode;
+
+    /**
+     * @var string
+     */
     private $fetchGsPUDOPoint;
+
+    /**
+     * @var string
+     */
     private $retrieveOpeningHours;
 
+    /**
+     * ParcelShopSearchRequest constructor.
+     * @param $username
+     * @param $password
+     * @param $countryIsoCode
+     * @param int $fetchGsPUDOPoint
+     * @param int $retrieveOpeningHours
+     */
     public function __construct($username, $password, $countryIsoCode, $fetchGsPUDOPoint = 1, $retrieveOpeningHours = 0)
     {
         $this->username = $username;
@@ -27,7 +74,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUsername()
     {
@@ -35,7 +82,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -43,7 +90,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPassword()
     {
@@ -51,7 +98,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -59,7 +106,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getParcelShopId()
     {
@@ -67,7 +114,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $parcelShopId
+     * @param string $parcelShopId
      */
     public function setParcelShopId($parcelShopId)
     {
@@ -75,7 +122,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCompany()
     {
@@ -83,7 +130,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $company
+     * @param string $company
      */
     public function setCompany($company)
     {
@@ -91,7 +138,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getStreet()
     {
@@ -99,7 +146,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $street
+     * @param string $street
      */
     public function setStreet($street)
     {
@@ -107,7 +154,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCity()
     {
@@ -115,7 +162,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $city
+     * @param string $city
      */
     public function setCity($city)
     {
@@ -123,7 +170,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCountry()
     {
@@ -131,7 +178,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $country
+     * @param string $country
      */
     public function setCountry($country)
     {
@@ -139,7 +186,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPCode()
     {
@@ -147,7 +194,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $pCode
+     * @param string $pCode
      */
     public function setPCode($pCode)
     {
@@ -155,7 +202,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFetchGsPUDOPoint()
     {
@@ -163,7 +210,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $fetchGsPUDOPoint
+     * @param string $fetchGsPUDOPoint
      */
     public function setFetchGsPUDOPoint($fetchGsPUDOPoint)
     {
@@ -171,7 +218,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRetrieveOpeningHours()
     {
@@ -179,7 +226,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * @param mixed $retrieveOpeningHours
+     * @param string $retrieveOpeningHours
      */
     public function setRetrieveOpeningHours($retrieveOpeningHours)
     {
@@ -187,11 +234,7 @@ class ParcelShopSearchRequest implements JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @return array
      */
     public function jsonSerialize()
     {
