@@ -11,4 +11,6 @@ class DPDGroupApiConfig
     const SQ_SHIPMENT_CREATION = '/ws-mapper-rest/createShipment_';
 
     const SQ_PARCEL_PRINT = '/ws-mapper-rest/parcelPrint_';
+
+    const SQ_CLOSING_MANIFEST = '/ws-mapper-rest/parcelManifestPrint_';
 }
