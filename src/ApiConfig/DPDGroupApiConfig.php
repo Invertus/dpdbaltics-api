@@ -15,4 +15,6 @@ class DPDGroupApiConfig
     const SQ_CLOSING_MANIFEST = '/ws-mapper-rest/parcelManifestPrint_';
 
     const SQ_COURIER_REQUEST= '/ws-mapper-rest/pickupOrderSave_';
+
+    const SQ_COLLECTION_REQUEST = '/ws-mapper-rest/crImport_';
 }
