@@ -78,7 +78,7 @@ class ParcelPrintResponse implements JsonSerializable
         return [
             'status' => $this->getStatus(),
             'errlog' => $this->getErrLog(),
-            'pdf' => $this->getPdf(),
+            'pdf' => $this->pdf,
         ];
     }
 }

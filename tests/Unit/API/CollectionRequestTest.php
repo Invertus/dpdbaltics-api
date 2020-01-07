@@ -14,7 +14,7 @@ class CollectionRequestTest extends TestCase
         $requestBody = $this->createCollectionRequestRequest($username, $password);
         $collectionRequest = CollectionRequestFactory::makeCollectionRequest();
         $responseBody = $collectionRequest->collectionRequest($requestBody);
-        $this->assertEquals($responseBody->getStatus(), 'ok');
+        $this->assertGreaterThan(0, strpos($responseBody, '201 OK Process ended'));
     }
 
     private function createCollectionRequestRequest($username, $password)

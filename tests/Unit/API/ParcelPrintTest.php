@@ -22,7 +22,7 @@ class ParcelPrintTest extends TestCase
         $parcelPrintRequest = new ParcelPrintRequest(
             $username,
             $password,
-            '06529971354838'
+            '05757922204560'
         );
 
         return $parcelPrintRequest;

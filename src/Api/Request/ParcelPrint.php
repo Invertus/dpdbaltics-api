@@ -41,7 +41,14 @@ class ParcelPrint
                 'verify' => false,
             ]
         );
-        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ParcelPrintResponse::class);
+        $responseContent = $response->getBody()->getContents();
+        $responseBody = $serializer->deserialize($responseContent, ParcelPrintResponse::class);
+
+        if ($responseBody->getStatus() === null) {
+            $responseBody->setStatus('ok');
+            $responseBody->setErrLog('');
+            $responseBody->setPdf($responseContent);
+        }
 
         return $responseBody;
     }

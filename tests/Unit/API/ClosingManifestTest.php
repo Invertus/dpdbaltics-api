@@ -1,7 +1,9 @@
 <?php
 
 use Invertus\dpdBalticsApi\Api\DTO\Request\ClosingManifestRequest;
+use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ClosingManifestFactory;
+use Invertus\dpdBalticsApi\Factory\APIRequest\ShipmentCreationFactory;
 use PHPUnit\Framework\TestCase;
 
 class ClosingManifestTest extends TestCase
@@ -11,6 +13,11 @@ class ClosingManifestTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
+
+        $requestBody = $this->createShipmentCreationRequest($username, $password);
+        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation();
+        $shipmentCreator->createShipment($requestBody);
+
         $requestBody = $this->createClosingManifestRequest($username, $password);
         $closingManifest = ClosingManifestFactory::makeClosingManifest();
         $responseBody = $closingManifest->closeManifest($requestBody);
@@ -22,9 +29,29 @@ class ClosingManifestTest extends TestCase
         $parcelPrintRequest = new ClosingManifestRequest(
             $username,
             $password,
-            '2020-02-20'
+            date('Y-m-d')
         );
 
         return $parcelPrintRequest;
+    }
+
+    private function createShipmentCreationRequest($username, $password)
+    {
+        $shipmentCreationRequest = new ShipmentCreationRequest(
+            $username,
+            $password,
+            'testName',
+            'testStreet',
+            'testCity',
+            'LV',
+            '3003',
+            1,
+            'D-B2C',
+            '123456',
+            1,
+            6
+        );
+
+        return $shipmentCreationRequest;
     }
 }
