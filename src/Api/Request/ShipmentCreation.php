@@ -1,15 +1,16 @@
 <?php
 
+
 namespace Invertus\dpdBalticsApi\Api\Request;
 
-use Exception;
+
 use Invertus\dpdBalticsApi\Api\ApiRequest;
-use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelShopSearchRequest;
-use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelShopSearchResponse;
+use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
+use Invertus\dpdBalticsApi\Api\DTO\Response\ShipmentCreationResponse;
 use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
-class ParcelShopSearch
+class ShipmentCreation
 {
 
     /**
@@ -23,21 +24,21 @@ class ParcelShopSearch
     }
 
     /**
-     * @param $request
-     * @return mixed
-     * @throws Exception
+     * @param ShipmentCreationRequest $request
+     * @return array|object
+     * @throws \Exception
      */
-    public function parcelShopSearch(ParcelShopSearchRequest $request)
+    public function createShipment(ShipmentCreationRequest $request)
     {
         $serializer = new SerializerFactory();
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SQ_PARCEL_SHOP_SEARCH,
+            DPDGroupApiConfig::SQ_SHIPMENT_CREATION,
             [
                 'query' => $request->jsonSerialize(),
                 'verify' => false,
             ]
         );
-        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ParcelShopSearchResponse::class);
+        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ShipmentCreationResponse::class);
 
         return $responseBody;
     }
