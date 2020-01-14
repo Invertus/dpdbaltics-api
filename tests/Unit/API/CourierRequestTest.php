@@ -16,7 +16,7 @@ class CourierRequestTest extends TestCase
         $requestBody = $this->createCourierRequestRequest($username, $password);
         $courierRequest = CourierRequestFactory::makeCourierRequest();
         $responseBody = $courierRequest->courierRequest($requestBody);
-        $this->assertEquals($responseBody->getStatus(), 'ok');
+        $this->assertEquals($responseBody, '<p>DONE');
     }
 
     private function createCourierRequestRequest($username, $password)

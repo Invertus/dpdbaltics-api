@@ -18,7 +18,7 @@ class ShipmentCreationResponse implements JsonSerializable
     private $errLog;
 
     /**
-     * @var string|null
+     * @var array|null
      */
     private $pl_number;
 
@@ -55,7 +55,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @return string|null
+     * @return array|null
      */
     public function getPlNumber()
     {
@@ -63,7 +63,7 @@ class ShipmentCreationResponse implements JsonSerializable
     }
 
     /**
-     * @param string|null $pl_number
+     * @param array|null $pl_number
      */
     public function setPlNumber($pl_number)
     {
