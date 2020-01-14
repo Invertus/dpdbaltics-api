@@ -1,16 +1,14 @@
 <?php
 
-namespace Invertus\dpdBalticsApi\Factory;
+namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfig;
-use Invertus\dpdBalticsApi\Api\Request\ParcelShopSearch;
 use Invertus\dpdBalticsApi\Api\Request\ShipmentCreation;
 
 class ShipmentCreationFactory
 {
     /**
-     *
      *
      * @return ShipmentCreation
      */

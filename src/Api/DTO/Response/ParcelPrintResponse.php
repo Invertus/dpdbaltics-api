@@ -5,7 +5,7 @@ namespace Invertus\dpdBalticsApi\Api\DTO\Response;
 use Invertus\dpdBalticsApi\Api\DTO\Object\ParcelShop;
 use JsonSerializable;
 
-class ShipmentCreationResponse implements JsonSerializable
+class ParcelPrintResponse implements JsonSerializable
 {
     /**
      * @var string
@@ -20,7 +20,7 @@ class ShipmentCreationResponse implements JsonSerializable
     /**
      * @var string
      */
-    private $pl_number;
+    private $pdf;
 
     /**
      * @return string
@@ -57,17 +57,17 @@ class ShipmentCreationResponse implements JsonSerializable
     /**
      * @return string
      */
-    public function getPlNumber()
+    public function getPdf()
     {
-        return $this->pl_number;
+        return $this->pdf;
     }
 
     /**
-     * @param string $pl_number
+     * @param string $pdf
      */
-    public function setPlNumber($pl_number)
+    public function setPdf($pdf)
     {
-        $this->pl_number = $pl_number;
+        $this->pdf = $pdf;
     }
 
     /**
@@ -78,7 +78,7 @@ class ShipmentCreationResponse implements JsonSerializable
         return [
             'status' => $this->getStatus(),
             'errlog' => $this->getErrLog(),
-            'pl_number' => $this->getPlNumber(),
+            'pdf' => $this->getPdf(),
         ];
     }
 }

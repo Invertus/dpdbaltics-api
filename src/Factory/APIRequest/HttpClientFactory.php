@@ -1,6 +1,6 @@
 <?php
 
-namespace Invertus\dpdBalticsApi\Factory;
+namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigInterface;
 use GuzzleHttp\Client;
