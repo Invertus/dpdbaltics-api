@@ -62,6 +62,11 @@ class ShipmentCreationResponse implements JsonSerializable
         return $this->pl_number;
     }
 
+    public function getPlNumbersAsString()
+    {
+        return implode('|', $this->pl_number);
+    }
+
     /**
      * @param array|null $pl_number
      */
