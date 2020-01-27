@@ -190,8 +190,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $numOfParcel,
         $parcelType,
         $phone,
-        $fetchGsPUDOpoint,
-        $parcelShopId
+        $fetchGsPUDOpoint
     )
     {
         $this->username = $username;
@@ -205,7 +204,6 @@ class ShipmentCreationRequest implements JsonSerializable
         $this->parcelType = $parcelType;
         $this->phone = $phone;
         $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
-        $this->parcelShopId = $parcelShopId;
     }
 
     /**
@@ -302,6 +300,14 @@ class ShipmentCreationRequest implements JsonSerializable
     public function getParcelShopId()
     {
         return $this->parcelShopId;
+    }
+
+    /**
+     * @param string $parcelShopId
+     */
+    public function setParcelShopId($parcelShopId)
+    {
+        $this->parcelShopId = $parcelShopId;
     }
 
     /**
@@ -621,7 +627,7 @@ class ShipmentCreationRequest implements JsonSerializable
             'city' => $this->city,
             'country' => $this->country,
             'pcode' => $this->pcode,
-            'numOfParcel' => $this->numOfParcel,
+            'num_of_parcel' => $this->numOfParcel,
             'parcel_type' => $this->parcelType,
             'phone' => $this->phone,
             'fetchGsPUDOpoint' => $this->fetchGsPUDOpoint,
