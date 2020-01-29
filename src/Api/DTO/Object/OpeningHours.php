@@ -34,6 +34,10 @@ class OpeningHours implements JsonSerializable
     private $openAfternoon;
 
     /**
+     * @var string
+     */
+    private $workHoursFormatted;
+    /**
      * OpeningHours constructor.
      * @param $weekDay
      * @param $openMorning
@@ -88,6 +92,22 @@ class OpeningHours implements JsonSerializable
     public function getOpenAfternoon()
     {
         return $this->openAfternoon;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWorkHoursFormatted()
+    {
+        return $this->workHoursFormatted;
+    }
+
+    /**
+     * @param string $workHoursFormatted
+     */
+    public function setWorkHoursFormatted($workHoursFormatted)
+    {
+        $this->workHoursFormatted = $workHoursFormatted;
     }
 
     /**
