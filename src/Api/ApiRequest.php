@@ -4,6 +4,7 @@ namespace Invertus\dpdBalticsApi\Api;
 
 use Exception;
 use Invertus\dpdBalticsApi\Factory\APIRequest\HttpClientFactory;
+use Psr\Log\LoggerInterface;
 
 class ApiRequest
 {
@@ -11,14 +12,19 @@ class ApiRequest
      * @var HttpClientFactory
      */
     private $clientFactory;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * ApiRequest constructor.
      * @param HttpClientFactory $clientFactory
      */
-    public function __construct(HttpClientFactory $clientFactory)
+    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger = null)
     {
         $this->clientFactory = $clientFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -38,6 +44,7 @@ class ApiRequest
 
             return $response ?: [];
         } catch (Exception $exception) {
+            $this->logger->error('Oh no!', array('exception' => $exception));
             throw $exception;
         }
     }

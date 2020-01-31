@@ -22,7 +22,9 @@
     "symfony/serializer": "*",
     "symfony/property-access": "*",
     "symfony/property-info": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "monolog/monolog": "^1.25",
+    "psr/log": "^1.1"
   },
   "require-dev": {
     "phpunit/phpunit": "*",
