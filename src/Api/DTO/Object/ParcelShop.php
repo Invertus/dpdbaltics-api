@@ -77,7 +77,7 @@ class ParcelShop implements JsonSerializable
     private $coordinateZ;
 
     /**
-     * @var OpeningHours
+     * @var OpeningHours[]
      */
     private $openingHours;
 
@@ -306,7 +306,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return OpeningHours
+     * @return OpeningHours[]
      */
     public function getOpeningHours()
     {
@@ -314,9 +314,9 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param OpeningHours $openingHours
+     * @param OpeningHours[] $openingHours
      */
-    public function setOpeningHours($openingHours)
+    public function setOpeningHours(array $openingHours)
     {
         $this->openingHours = $openingHours;
     }
