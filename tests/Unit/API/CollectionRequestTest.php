@@ -13,7 +13,8 @@ class CollectionRequestTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createCollectionRequestRequest($username, $password);
-        $collectionRequest = CollectionRequestFactory::makeCollectionRequest(new NullLogger());
+        $collectionRequestFactory = new CollectionRequestFactory(new NullLogger());
+        $collectionRequest = $collectionRequestFactory->makeCollectionRequest();
         $responseBody = $collectionRequest->collectionRequest($requestBody);
         $this->assertGreaterThan(0, strpos($responseBody, '201 OK Process ended'));
     }

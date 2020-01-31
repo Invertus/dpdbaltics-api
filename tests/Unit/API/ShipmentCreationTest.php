@@ -13,7 +13,8 @@ class ShipmentCreationTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createShipmentCreationRequest($username, $password);
-        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation(new NullLogger());
+        $shipmentCreatorFactory = new ShipmentCreationFactory(new NullLogger());
+        $shipmentCreator = $shipmentCreatorFactory->makeShipmentCreation();
         $responseBody = $shipmentCreator->createShipment($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }

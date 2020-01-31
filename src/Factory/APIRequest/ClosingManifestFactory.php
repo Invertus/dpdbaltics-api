@@ -11,13 +11,23 @@ class ClosingManifestFactory
 {
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * @return ClosingManifest
      */
-    public static function makeClosingManifest(LoggerInterface $logger)
+    public function makeClosingManifest()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new ClosingManifest($apiRequest);
     }

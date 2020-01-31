@@ -11,13 +11,23 @@ use Psr\Log\LoggerInterface;
 class ParcelPrintFactory
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * @return ParcelPrint
      */
-    public static function makeParcelPrint(LoggerInterface $logger)
+    public function makeParcelPrint()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new ParcelPrint($apiRequest);
     }

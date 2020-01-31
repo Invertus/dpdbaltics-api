@@ -10,13 +10,23 @@ use Psr\Log\LoggerInterface;
 class CollectionRequestFactory
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * @return CollectionRequest
      */
-    public static function makeCollectionRequest(LoggerInterface $logger)
+    public function makeCollectionRequest()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new CollectionRequest($apiRequest);
     }

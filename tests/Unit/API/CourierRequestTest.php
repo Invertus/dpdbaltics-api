@@ -15,7 +15,8 @@ class CourierRequestTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createCourierRequestRequest($username, $password);
-        $courierRequest = CourierRequestFactory::makeCourierRequest(new NullLogger());
+        $courierRequestFactory = new CourierRequestFactory(new NullLogger());
+        $courierRequest = $courierRequestFactory->makeCourierRequest();
         $responseBody = $courierRequest->courierRequest($requestBody);
         $this->assertEquals($responseBody, '<p>DONE');
     }

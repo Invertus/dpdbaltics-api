@@ -16,11 +16,13 @@ class ClosingManifestTest extends TestCase
         $password = getenv('DPD_PASSWORD');
 
         $requestBody = $this->createShipmentCreationRequest($username, $password);
-        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation(new NullLogger());
+        $shipmentCreationFactory = new ShipmentCreationFactory(new NullLogger());
+        $shipmentCreator = $shipmentCreationFactory->makeShipmentCreation();
         $shipmentCreator->createShipment($requestBody);
 
         $requestBody = $this->createClosingManifestRequest($username, $password);
-        $closingManifest = ClosingManifestFactory::makeClosingManifest(new NullLogger());
+        $closingManifestFactory = new ClosingManifestFactory(new NullLogger());
+        $closingManifest = $closingManifestFactory->makeClosingManifest();
         $responseBody = $closingManifest->closeManifest($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }

@@ -10,15 +10,24 @@ use Psr\Log\LoggerInterface;
 
 class CourierRequestFactory
 {
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
 
     /**
      * @return CourierRequest
      */
-    public static function makeCourierRequest(LoggerInterface $logger)
+    public function makeCourierRequest()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new CourierRequest($apiRequest);
     }

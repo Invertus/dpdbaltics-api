@@ -10,13 +10,23 @@ use Psr\Log\LoggerInterface;
 class ParcelShopSearchFactory
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * @return ParcelShopSearch
      */
-    public static function makeParcelShopSearch(LoggerInterface $logger)
+    public function makeParcelShopSearch()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new ParcelShopSearch($apiRequest);
     }

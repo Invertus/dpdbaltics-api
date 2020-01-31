@@ -10,14 +10,24 @@ use Psr\Log\LoggerInterface;
 class ShipmentCreationFactory
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      *
      * @return ShipmentCreation
      */
-    public static function makeShipmentCreation(LoggerInterface $logger)
+    public function makeShipmentCreation()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory, $logger);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new ShipmentCreation($apiRequest);
     }
