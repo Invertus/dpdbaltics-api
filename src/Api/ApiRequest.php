@@ -42,9 +42,23 @@ class ApiRequest
         try {
             $response = $this->clientFactory->getClient()->post($url, $params);
 
-            return $response ?: [];
+            $responseContent = $response->getBody()->getContents();
+            $content = json_decode($responseContent);
+            if ($content->status === 'err') {
+                $this->logger->error($content->errLog,
+                    [
+                        'request' => $response->getEffectiveUrl(),
+                        'status' => 'error',
+                    ]
+                );
+            }
+            return $responseContent ?: [];
         } catch (Exception $exception) {
-            $this->logger->error('Oh no!', array('exception' => $exception));
+            $this->logger->error($exception->getMessage(),
+                [
+                    'request' => $exception
+                ]
+            );
             throw $exception;
         }
     }
