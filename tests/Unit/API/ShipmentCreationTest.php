@@ -3,6 +3,7 @@
 use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ShipmentCreationFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 
 class ShipmentCreationTest extends TestCase
 {
@@ -12,7 +13,7 @@ class ShipmentCreationTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createShipmentCreationRequest($username, $password);
-        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation();
+        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation(new NullLogger());
         $responseBody = $shipmentCreator->createShipment($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }
@@ -30,8 +31,7 @@ class ShipmentCreationTest extends TestCase
             1,
             'D-B2C',
             '123456',
-            1,
-            6
+            1
         );
 
         return $shipmentCreationRequest;

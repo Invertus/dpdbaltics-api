@@ -38,7 +38,7 @@ class ShipmentCreation
                 'verify' => false,
             ]
         );
-        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ShipmentCreationResponse::class);
+        $responseBody = $serializer->deserialize($response, ShipmentCreationResponse::class);
 
         return $responseBody;
     }

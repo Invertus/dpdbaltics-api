@@ -5,6 +5,7 @@ use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ClosingManifestFactory;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ShipmentCreationFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 
 class ClosingManifestTest extends TestCase
 {
@@ -15,11 +16,11 @@ class ClosingManifestTest extends TestCase
         $password = getenv('DPD_PASSWORD');
 
         $requestBody = $this->createShipmentCreationRequest($username, $password);
-        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation();
+        $shipmentCreator = ShipmentCreationFactory::makeShipmentCreation(new NullLogger());
         $shipmentCreator->createShipment($requestBody);
 
         $requestBody = $this->createClosingManifestRequest($username, $password);
-        $closingManifest = ClosingManifestFactory::makeClosingManifest();
+        $closingManifest = ClosingManifestFactory::makeClosingManifest(new NullLogger());
         $responseBody = $closingManifest->closeManifest($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }

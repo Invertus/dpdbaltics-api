@@ -37,7 +37,7 @@ class ParcelShopSearch
                 'verify' => false,
             ]
         );
-        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ParcelShopSearchResponse::class);
+        $responseBody = $serializer->deserialize($response, ParcelShopSearchResponse::class);
 
         return $responseBody;
     }

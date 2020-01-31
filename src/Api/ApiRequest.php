@@ -21,7 +21,7 @@ class ApiRequest
      * ApiRequest constructor.
      * @param HttpClientFactory $clientFactory
      */
-    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger = null)
+    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger)
     {
         $this->clientFactory = $clientFactory;
         $this->logger = $logger;
@@ -44,7 +44,7 @@ class ApiRequest
 
             $responseContent = $response->getBody()->getContents();
             $content = json_decode($responseContent);
-            if ($content->status === 'err') {
+            if (isset($content->status) && $content->status === 'err') {
                 $this->logger->error($content->errLog,
                     [
                         'request' => $response->getEffectiveUrl(),
@@ -56,8 +56,9 @@ class ApiRequest
         } catch (Exception $exception) {
             $this->logger->error($exception->getMessage(),
                 [
-                    'request' => $exception
-                ]
+                    'request' => '',
+                    'status' => 'error',
+                    ]
             );
             throw $exception;
         }
