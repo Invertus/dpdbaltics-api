@@ -45,7 +45,7 @@ class ApiRequest
             $responseContent = $response->getBody()->getContents();
             $content = json_decode($responseContent);
             if (isset($content->status) && $content->status === 'err') {
-                $this->logger->error($content->errLog,
+                $this->logger->error($content->errlog,
                     [
                         'request' => $response->getEffectiveUrl(),
                         'status' => 'error',
