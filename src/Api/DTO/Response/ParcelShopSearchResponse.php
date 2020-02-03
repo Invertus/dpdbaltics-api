@@ -19,7 +19,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     private $errLog;
 
     /**
-     * @param ParcelShop[]
+     * @param ParcelShop[]|null
      */
     private $parcelShops = [];
 
@@ -56,7 +56,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @return ParcelShop[]
+     * @return ParcelShop[]|null
      */
     public function getParcelShops()
     {
@@ -64,7 +64,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @param ParcelShop[] $parcelShops
+     * @param ParcelShop[]|null $parcelShops
      */
     public function setParcelShops(array $parcelShops)
     {
