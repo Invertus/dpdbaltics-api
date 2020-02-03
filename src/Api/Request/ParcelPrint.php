@@ -41,7 +41,7 @@ class ParcelPrint
                 'verify' => false,
             ]
         );
-        $responseContent = $response->getBody()->getContents();
+        $responseContent = $response;
         $responseBody = $serializer->deserialize($responseContent, ParcelPrintResponse::class);
 
         if ($responseBody->getStatus() === null) {

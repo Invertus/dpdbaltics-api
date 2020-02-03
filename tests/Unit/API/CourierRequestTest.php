@@ -5,6 +5,7 @@ use Invertus\dpdBalticsApi\Api\DTO\Request\CourierRequestRequest;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ClosingManifestFactory;
 use Invertus\dpdBalticsApi\Factory\APIRequest\CourierRequestFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 
 class CourierRequestTest extends TestCase
 {
@@ -14,7 +15,8 @@ class CourierRequestTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createCourierRequestRequest($username, $password);
-        $courierRequest = CourierRequestFactory::makeCourierRequest();
+        $courierRequestFactory = new CourierRequestFactory(new NullLogger());
+        $courierRequest = $courierRequestFactory->makeCourierRequest();
         $responseBody = $courierRequest->courierRequest($requestBody);
         $this->assertEquals($responseBody, '<p>DONE');
     }

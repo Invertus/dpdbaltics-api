@@ -43,7 +43,7 @@ class ClosingManifest
                 'verify' => false,
             ]
         );
-        $responseBody = $serializer->deserialize($response->getBody()->getContents(), ClosingManifestResponse::class);
+        $responseBody = $serializer->deserialize($response, ClosingManifestResponse::class);
 
         return $responseBody;
     }

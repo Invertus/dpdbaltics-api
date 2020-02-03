@@ -45,6 +45,6 @@ class CourierRequest
             ]
         );
 
-        return $response->getBody()->getContents();
+        return $response;
     }
 }

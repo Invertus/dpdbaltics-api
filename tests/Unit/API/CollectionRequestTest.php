@@ -3,6 +3,7 @@
 use Invertus\dpdBalticsApi\Api\DTO\Request\CollectionRequestRequest;
 use Invertus\dpdBalticsApi\Factory\APIRequest\CollectionRequestFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 
 class CollectionRequestTest extends TestCase
 {
@@ -12,7 +13,8 @@ class CollectionRequestTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createCollectionRequestRequest($username, $password);
-        $collectionRequest = CollectionRequestFactory::makeCollectionRequest();
+        $collectionRequestFactory = new CollectionRequestFactory(new NullLogger());
+        $collectionRequest = $collectionRequestFactory->makeCollectionRequest();
         $responseBody = $collectionRequest->collectionRequest($requestBody);
         $this->assertGreaterThan(0, strpos($responseBody, '201 OK Process ended'));
     }

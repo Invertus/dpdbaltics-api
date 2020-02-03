@@ -39,6 +39,6 @@ class CollectionRequest
             ]
         );
 
-        return $response->getBody()->getContents();
+        return $response;
     }
 }

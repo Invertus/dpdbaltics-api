@@ -6,17 +6,28 @@ use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfig;
 use Invertus\dpdBalticsApi\Api\Request\ParcelPrint;
 use Invertus\dpdBalticsApi\Api\Request\ShipmentCreation;
+use Psr\Log\LoggerInterface;
 
 class ParcelPrintFactory
 {
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
      * @return ParcelPrint
      */
-    public static function makeParcelPrint()
+    public function makeParcelPrint()
     {
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory($apiConfig);
-        $apiRequest = new ApiRequest($httpClientFactory);
+        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new ParcelPrint($apiRequest);
     }
