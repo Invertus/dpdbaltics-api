@@ -66,7 +66,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     /**
      * @param ParcelShop[]|null $parcelShops
      */
-    public function setParcelShops(array $parcelShops)
+    public function setParcelShops($parcelShops)
     {
         $this->parcelShops = $parcelShops;
     }
