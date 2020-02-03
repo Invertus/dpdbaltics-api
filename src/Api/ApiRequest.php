@@ -45,20 +45,20 @@ class ApiRequest
             $responseContent = $response->getBody()->getContents();
             $content = json_decode($responseContent);
             if (isset($content->status) && $content->status === 'err') {
-                $this->logger->error($content->errlog,
+                $this->logger->error(
+                    $content->errlog,
                     [
                         'request' => $response->getEffectiveUrl(),
-                        'status' => 'error',
                     ]
                 );
             }
             return $responseContent ?: [];
         } catch (Exception $exception) {
-            $this->logger->error($exception->getMessage(),
+            $this->logger->critical(
+                $exception->getMessage(),
                 [
-                    'request' => '',
-                    'status' => 'error',
-                    ]
+                    'request' => $url,
+                ]
             );
             throw $exception;
         }
