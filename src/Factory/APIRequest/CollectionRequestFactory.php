@@ -14,9 +14,33 @@ class CollectionRequestFactory
      */
     private $logger;
 
-    public function __construct(LoggerInterface $logger)
+    /**
+     * @var string
+     */
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var string
+     */
+    private $pluginVersion;
+
+    /**
+     * @var string
+     */
+    private $eShopVersion;
+
+    public function __construct(LoggerInterface $logger, $username, $password, $pluginVersion, $eShopVersion)
     {
         $this->logger = $logger;
+        $this->username = $username;
+        $this->password = $password;
+        $this->pluginVersion = $pluginVersion;
+        $this->eShopVersion = $eShopVersion;
     }
 
     /**
@@ -25,7 +49,13 @@ class CollectionRequestFactory
     public function makeCollectionRequest()
     {
         $apiConfig = new ApiConfig();
-        $httpClientFactory = new HttpClientFactory($apiConfig);
+        $httpClientFactory = new HttpClientFactory(
+            $apiConfig,
+            $this->username,
+            $this->password,
+            $this->pluginVersion,
+            $this->eShopVersion
+        );
         $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new CollectionRequest($apiRequest);
