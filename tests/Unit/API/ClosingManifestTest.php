@@ -51,8 +51,7 @@ class ClosingManifestTest extends TestCase
             1,
             'D-B2C',
             '123456',
-            1,
-            6
+            1
         );
 
         return $shipmentCreationRequest;

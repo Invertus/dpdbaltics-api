@@ -24,7 +24,8 @@
     "symfony/property-info": "*",
     "ext-json": "*",
     "monolog/monolog": "^1.25",
-    "psr/log": "^1.1"
+    "psr/log": "^1.1",
+    "phpdocumentor/reflection-docblock": "^3.0|^4.0"
   },
   "require-dev": {
     "phpunit/phpunit": "*",

@@ -5,7 +5,9 @@ namespace Invertus\dpdBalticsApi\Api\Request;
 use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\CollectionRequestRequest;
+use Invertus\dpdBalticsApi\Api\DTO\Response\CollectionRequestResponse;
 use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class CollectionRequest
 {
@@ -31,6 +33,7 @@ class CollectionRequest
      */
     public function collectionRequest(CollectionRequestRequest $request)
     {
+        $serializer = new SerializerFactory();
         $response = $this->apiRequest->post(
             DPDGroupApiConfig::SQ_COLLECTION_REQUEST,
             [
@@ -39,6 +42,8 @@ class CollectionRequest
             ]
         );
 
-        return $response;
+        $responseBody = $serializer->deserialize($response, CollectionRequestResponse::class);
+
+        return $responseBody;
     }
 }
