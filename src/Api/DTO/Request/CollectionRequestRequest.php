@@ -376,8 +376,6 @@ class CollectionRequestRequest implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'username' => $this->getUsername(),
-            'password' => $this->getPassword(),
             'cname' => $this->getCname(),
             'cname1' => $this->getCname1(),
             'cname2' => $this->getCname2(),

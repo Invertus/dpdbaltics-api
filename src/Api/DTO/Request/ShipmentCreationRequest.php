@@ -587,8 +587,6 @@ class ShipmentCreationRequest implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'username' => $this->username,
-            'password' => $this->password,
             'name1' => $this->name1,
             'street' => $this->street,
             'city' => $this->city,

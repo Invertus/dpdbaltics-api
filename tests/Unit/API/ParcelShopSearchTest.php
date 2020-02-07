@@ -13,16 +13,22 @@ class ParcelShopSearchTest extends TestCase
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
         $countryIso = 'LV';
-        $requestBody = $this->createParcelShopSearchRequest($username, $password, $countryIso);
-        $parcelShopSearchFactory = new ParcelShopSearchFactory(new NullLogger());
+        $requestBody = $this->createParcelShopSearchRequest($countryIso);
+        $parcelShopSearchFactory = new ParcelShopSearchFactory(
+            new NullLogger(),
+            $username,
+            $password,
+            '1.0.0',
+            _PS_VERSION_
+        );
         $parcelShopSearch = $parcelShopSearchFactory->makeParcelShopSearch();
         $responseBody = $parcelShopSearch->parcelShopSearch($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }
 
-    private function createParcelShopSearchRequest($username, $password, $countryIso)
+    private function createParcelShopSearchRequest($countryIso)
     {
-        $parcelShopSearchRequest = new ParcelShopSearchRequest($username, $password, $countryIso);
+        $parcelShopSearchRequest = new ParcelShopSearchRequest($countryIso);
 
         return $parcelShopSearchRequest;
     }

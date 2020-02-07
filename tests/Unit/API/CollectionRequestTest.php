@@ -12,18 +12,21 @@ class CollectionRequestTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
-        $requestBody = $this->createCollectionRequestRequest($username, $password);
-        $collectionRequestFactory = new CollectionRequestFactory(new NullLogger());
-        $collectionRequest = $collectionRequestFactory->makeCollectionRequest();
-        $responseBody = $collectionRequest->collectionRequest($requestBody);
-        $this->assertGreaterThan(0, strpos($responseBody, '201 OK Process ended'));
-    }
-
-    private function createCollectionRequestRequest($username, $password)
-    {
-        $parcelPrintRequest = new CollectionRequestRequest(
+        $requestBody = $this->createCollectionRequestRequest();
+        $collectionRequestFactory = new CollectionRequestFactory(
+            new NullLogger(),
             $username,
             $password,
+            '1.0.0',
+            _PS_VERSION_);
+        $collectionRequest = $collectionRequestFactory->makeCollectionRequest();
+        $response = $collectionRequest->collectionRequest($requestBody);
+        $this->assertGreaterThan(0, strpos($response, '201 OK Process ended'));
+    }
+
+    private function createCollectionRequestRequest()
+    {
+        $parcelPrintRequest = new CollectionRequestRequest(
             'cname',
             'cstreet',
             'LV',

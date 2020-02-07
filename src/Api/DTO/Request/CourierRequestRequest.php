@@ -293,8 +293,6 @@ class CourierRequestRequest implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'username' => $this->getUsername(),
-            'password' => $this->getPassword(),
             'orderNr' => $this->getOrderNr(),
             'payerId' => $this->getPayerId(),
             'senderName' => $this->getSenderName(),

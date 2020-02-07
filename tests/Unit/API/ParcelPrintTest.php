@@ -12,18 +12,22 @@ class ParcelPrintTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
-        $requestBody = $this->createParcelPrintRequest($username, $password);
-        $parcelPrinterFactory = new ParcelPrintFactory(new NullLogger());
+        $requestBody = $this->createParcelPrintRequest();
+        $parcelPrinterFactory = new ParcelPrintFactory(
+            new NullLogger(),
+            $username,
+            $password,
+            '1.0.0',
+            _PS_VERSION_
+        );
         $parcelPrinter = $parcelPrinterFactory->makeParcelPrint();
         $responseBody = $parcelPrinter->printParcel($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }
 
-    private function createParcelPrintRequest($username, $password)
+    private function createParcelPrintRequest()
     {
         $parcelPrintRequest = new ParcelPrintRequest(
-            $username,
-            $password,
             '05757922204560'
         );
 

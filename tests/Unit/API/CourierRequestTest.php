@@ -14,18 +14,22 @@ class CourierRequestTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
-        $requestBody = $this->createCourierRequestRequest($username, $password);
-        $courierRequestFactory = new CourierRequestFactory(new NullLogger());
+        $requestBody = $this->createCourierRequestRequest();
+        $courierRequestFactory = new CourierRequestFactory(
+            new NullLogger(),
+            $username,
+            $password,
+            '1.0.0',
+            _PS_VERSION_
+        );
         $courierRequest = $courierRequestFactory->makeCourierRequest();
         $responseBody = $courierRequest->courierRequest($requestBody);
         $this->assertEquals($responseBody, '<p>DONE');
     }
 
-    private function createCourierRequestRequest($username, $password)
+    private function createCourierRequestRequest()
     {
         $parcelPrintRequest = new CourierRequestRequest(
-            $username,
-            $password,
             '123456',
             'testAddres',
             'senderCity',

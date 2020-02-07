@@ -12,18 +12,22 @@ class ShipmentCreationTest extends TestCase
     {
         $username = getenv('DPD_USERNAME');
         $password = getenv('DPD_PASSWORD');
-        $requestBody = $this->createShipmentCreationRequest($username, $password);
-        $shipmentCreatorFactory = new ShipmentCreationFactory(new NullLogger());
+        $requestBody = $this->createShipmentCreationRequest();
+        $shipmentCreatorFactory = new ShipmentCreationFactory(
+            new NullLogger(),
+            $username,
+            $password,
+            '1.0.0',
+            _PS_VERSION_
+        );
         $shipmentCreator = $shipmentCreatorFactory->makeShipmentCreation();
         $responseBody = $shipmentCreator->createShipment($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }
 
-    private function createShipmentCreationRequest($username, $password)
+    private function createShipmentCreationRequest()
     {
         $shipmentCreationRequest = new ShipmentCreationRequest(
-            $username,
-            $password,
             'testName',
             'testStreet',
             'testCity',

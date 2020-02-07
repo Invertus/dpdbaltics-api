@@ -194,8 +194,6 @@ class ParcelShopSearchRequest implements JsonSerializable
     public function jsonSerialize()
     {
         $request = [
-            'username' => $this->username,
-            'password' => $this->password,
             'country' => $this->country,
             'fetchGsPUDOpoint' => $this->fetchGsPUDOPoint,
             'id' => $this->parcelShopId,

@@ -101,8 +101,6 @@ class ParcelPrintRequest implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'username' => $this->getUsername(),
-            'password' => $this->getPassword(),
             'parcels' => $this->getParcels(),
             'printType' => $this->getPrintType(),
             'printFormat' => $this->getPrintFormat(),
