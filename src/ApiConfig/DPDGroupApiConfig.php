@@ -17,4 +17,6 @@ class DPDGroupApiConfig
     const SQ_COURIER_REQUEST= '/ws-mapper-rest/pickupOrderSave_';
 
     const SQ_COLLECTION_REQUEST = '/ws-mapper-rest/crImport_';
+
+    const VERSION = '1.0.0';
 }

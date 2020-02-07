@@ -4,6 +4,7 @@ namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigInterface;
 use GuzzleHttp\Client;
+use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
 
 /**
  * Class HttpClientFactory
@@ -52,6 +53,7 @@ class HttpClientFactory
                 ],
                 'query' => [
                     'PluginVersion' => $this->pluginVersion,
+                    'PluginLibVersion' => DPDGroupApiConfig::VERSION,
                     'EshopVersion' => $this->eShopVersion,
                     'username' => $this->username,
                     'password' => $this->password
