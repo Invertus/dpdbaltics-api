@@ -1,6 +1,7 @@
 <?php
 
 use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelPrintRequest;
+use Invertus\dpdBalticsApi\Factory\APIParamsFactory;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ParcelPrintFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
@@ -10,15 +11,10 @@ class ParcelPrintTest extends TestCase
 
     public function testShipmentCreation()
     {
-        $username = getenv('DPD_USERNAME');
-        $password = getenv('DPD_PASSWORD');
         $requestBody = $this->createParcelPrintRequest();
         $parcelPrinterFactory = new ParcelPrintFactory(
             new NullLogger(),
-            $username,
-            $password,
-            '1.0.0',
-            _PS_VERSION_
+            new APIParamsFactory()
         );
         $parcelPrinter = $parcelPrinterFactory->makeParcelPrint();
         $responseBody = $parcelPrinter->printParcel($requestBody);

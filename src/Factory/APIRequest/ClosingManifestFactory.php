@@ -5,6 +5,7 @@ namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfig;
 use Invertus\dpdBalticsApi\Api\Request\ClosingManifest;
+use Invertus\dpdBalticsApi\Factory\APIParamsFactoryInterface;
 use Psr\Log\LoggerInterface;
 
 class ClosingManifestFactory
@@ -14,34 +15,16 @@ class ClosingManifestFactory
      * @var LoggerInterface
      */
     private $logger;
-
     /**
-     * @var string
+     * @var APIParamsFactoryInterface
      */
-    private $username;
+    private $APIParamsFactory;
 
-    /**
-     * @var string
-     */
-    private $password;
 
-    /**
-     * @var string
-     */
-    private $pluginVersion;
-
-    /**
-     * @var string
-     */
-    private $eShopVersion;
-
-    public function __construct(LoggerInterface $logger, $username, $password, $pluginVersion, $eShopVersion)
+    public function __construct(LoggerInterface $logger, APIParamsFactoryInterface $APIParamsFactory)
     {
         $this->logger = $logger;
-        $this->username = $username;
-        $this->password = $password;
-        $this->pluginVersion = $pluginVersion;
-        $this->eShopVersion = $eShopVersion;
+        $this->APIParamsFactory = $APIParamsFactory;
     }
 
     /**
@@ -52,10 +35,10 @@ class ClosingManifestFactory
         $apiConfig = new ApiConfig();
         $httpClientFactory = new HttpClientFactory(
             $apiConfig,
-            $this->username,
-            $this->password,
-            $this->pluginVersion,
-            $this->eShopVersion
+            $this->APIParamsFactory->getUsername(),
+            $this->APIParamsFactory->getPassword(),
+            $this->APIParamsFactory->getModuleVersion(),
+            $this->APIParamsFactory->getPSVersion()
         );
         $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
