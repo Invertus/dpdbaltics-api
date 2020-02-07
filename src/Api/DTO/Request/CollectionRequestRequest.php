@@ -12,16 +12,6 @@ class CollectionRequestRequest implements JsonSerializable
     /**
      * @var string
      */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
     private $cname;
 
     /**
@@ -121,8 +111,6 @@ class CollectionRequestRequest implements JsonSerializable
 
     /**
      * CollectionRequestRequest constructor.
-     * @param string $username
-     * @param string $password
      * @param $cname
      * @param $cstreet
      * @param $ccountry
@@ -135,10 +123,8 @@ class CollectionRequestRequest implements JsonSerializable
      * @param $rcountry
      * @param $rcity
      */
-    public function __construct($username, $password, $cname, $cstreet, $ccountry, $cpostal, $ccity, $info1, $rname, $rstreet, $rpostal, $rcountry, $rcity)
+    public function __construct($cname, $cstreet, $ccountry, $cpostal, $ccity, $info1, $rname, $rstreet, $rpostal, $rcountry, $rcity)
     {
-        $this->username = $username;
-        $this->password = $password;
         $this->cname = $cname;
         $this->cstreet = $cstreet;
         $this->ccountry = $ccountry;
@@ -150,22 +136,6 @@ class CollectionRequestRequest implements JsonSerializable
         $this->rpostal = $rpostal;
         $this->rcountry = $rcountry;
         $this->rcity = $rcity;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**

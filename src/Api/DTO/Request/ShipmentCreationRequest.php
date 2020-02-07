@@ -12,16 +12,6 @@ class ShipmentCreationRequest implements JsonSerializable
     /**
      * @var string
      */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
     private $name1;
 
     /**
@@ -166,8 +156,6 @@ class ShipmentCreationRequest implements JsonSerializable
 
     /**
      * ShipmentCreationRequest constructor.
-     * @param $username
-     * @param $password
      * @param $name1
      * @param $street
      * @param $city
@@ -180,8 +168,6 @@ class ShipmentCreationRequest implements JsonSerializable
      * @param $parcelShopId
      */
     public function __construct(
-        $username,
-        $password,
         $name1,
         $street,
         $city,
@@ -191,10 +177,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $parcelType,
         $phone,
         $fetchGsPUDOpoint
-    )
-    {
-        $this->username = $username;
-        $this->password = $password;
+    ) {
         $this->name1 = $name1;
         $this->street = $street;
         $this->city = $city;
@@ -204,22 +187,6 @@ class ShipmentCreationRequest implements JsonSerializable
         $this->parcelType = $parcelType;
         $this->phone = $phone;
         $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**

@@ -8,15 +8,6 @@ use JsonSerializable;
 
 class ParcelPrintRequest implements JsonSerializable
 {
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
 
     /**
      * @var string
@@ -40,31 +31,11 @@ class ParcelPrintRequest implements JsonSerializable
 
     /**
      * ParcelPrintRequest constructor.
-     * @param $username
-     * @param $password
      * @param $parcels
      */
-    public function __construct($username, $password, $parcels)
+    public function __construct($parcels)
     {
-        $this->username = $username;
-        $this->password = $password;
         $this->parcels = $parcels;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**

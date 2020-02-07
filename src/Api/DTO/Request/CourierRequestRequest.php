@@ -12,16 +12,6 @@ class CourierRequestRequest implements JsonSerializable
     /**
      * @var string
      */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
     private $orderNr;
 
     /**
@@ -102,8 +92,6 @@ class CourierRequestRequest implements JsonSerializable
 
     /**
      * CourierRequestRequest constructor.
-     * @param $username
-     * @param $password
      * @param $orderNr
      * @param $senderAddress
      * @param $senderCity
@@ -116,10 +104,8 @@ class CourierRequestRequest implements JsonSerializable
      * @param $weight
      * @param $parcelsCount
      */
-    public function __construct($username, $password, $orderNr, $senderAddress, $senderCity, $senderCountry, $senderPostalCode, $senderContact, $senderPhone, $senderWorkUntil, $pickupTime, $weight, $parcelsCount)
+    public function __construct($orderNr, $senderAddress, $senderCity, $senderCountry, $senderPostalCode, $senderContact, $senderPhone, $senderWorkUntil, $pickupTime, $weight, $parcelsCount)
     {
-        $this->username = $username;
-        $this->password = $password;
         $this->orderNr = $orderNr;
         $this->senderAddress = $senderAddress;
         $this->senderCity = $senderCity;
@@ -131,22 +117,6 @@ class CourierRequestRequest implements JsonSerializable
         $this->pickupTime = $pickupTime;
         $this->weight = $weight;
         $this->parcelsCount = $parcelsCount;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
