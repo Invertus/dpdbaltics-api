@@ -2,9 +2,9 @@
 
 namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
-use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigInterface;
+use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigurationInterface;
 use GuzzleHttp\Client;
-use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 
 /**
  * Class HttpClientFactory
@@ -22,13 +22,13 @@ class HttpClientFactory
 
     /**
      * HttpClientFactory constructor.
-     * @param ApiConfigInterface $config
+     * @param ApiConfigurationInterface $config
      * @param $username
      * @param $password
      * @param $pluginVersion
      * @param $eShopVersion
      */
-    public function __construct(ApiConfigInterface $config, $username, $password, $pluginVersion, $eShopVersion)
+    public function __construct(ApiConfigurationInterface $config, $username, $password, $pluginVersion, $eShopVersion)
     {
         $this->config = $config;
         $this->username = $username;
@@ -53,7 +53,7 @@ class HttpClientFactory
                 ],
                 'query' => [
                     'PluginVersion' => $this->pluginVersion,
-                    'PluginLibVersion' => DPDGroupApiConfig::VERSION,
+                    'PluginLibVersion' => ApiConfig::VERSION,
                     'EshopVersion' => $this->eShopVersion,
                     'username' => $this->username,
                     'password' => $this->password

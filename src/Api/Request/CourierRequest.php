@@ -10,7 +10,7 @@ use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelPrintRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ClosingManifestResponse;
 use Invertus\dpdBalticsApi\Api\DTO\Response\CourierRequestResponse;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelPrintResponse;
-use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class CourierRequest
@@ -38,7 +38,7 @@ class CourierRequest
     public function courierRequest(CourierRequestRequest $request)
     {
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SQ_COURIER_REQUEST,
+            ApiConfig::SQ_COURIER_REQUEST,
             [
                 'query' => $request->jsonSerialize(),
                 'verify' => false,

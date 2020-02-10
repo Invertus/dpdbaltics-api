@@ -7,7 +7,7 @@ namespace Invertus\dpdBalticsApi\Api\Request;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ShipmentCreationResponse;
-use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class ShipmentCreation
@@ -32,7 +32,7 @@ class ShipmentCreation
     {
         $serializer = new SerializerFactory();
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SQ_SHIPMENT_CREATION,
+            ApiConfig::SQ_SHIPMENT_CREATION,
             [
                 'query' => $request->jsonSerialize(),
                 'verify' => false,

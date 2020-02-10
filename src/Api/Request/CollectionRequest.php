@@ -6,7 +6,7 @@ use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\CollectionRequestRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\CollectionRequestResponse;
-use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class CollectionRequest
@@ -34,7 +34,7 @@ class CollectionRequest
     public function collectionRequest(CollectionRequestRequest $request)
     {
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SQ_COLLECTION_REQUEST,
+            ApiConfig::SQ_COLLECTION_REQUEST,
             [
                 'query' => $request->jsonSerialize(),
                 'verify' => false,
