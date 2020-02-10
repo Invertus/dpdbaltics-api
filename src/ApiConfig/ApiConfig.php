@@ -19,9 +19,4 @@ class ApiConfig
     const SQ_COLLECTION_REQUEST = '/ws-mapper-rest/crImport_';
 
     const VERSION = '1.0.0';
-
-    public function getUrl()
-    {
-        return self::TEST_URL_LV;
-    }
 }
