@@ -33,7 +33,6 @@ class CollectionRequest
      */
     public function collectionRequest(CollectionRequestRequest $request)
     {
-        $serializer = new SerializerFactory();
         $response = $this->apiRequest->post(
             DPDGroupApiConfig::SQ_COLLECTION_REQUEST,
             [
@@ -42,8 +41,6 @@ class CollectionRequest
             ]
         );
 
-        $responseBody = $serializer->deserialize($response, CollectionRequestResponse::class);
-
-        return $responseBody;
+        return $response;
     }
 }

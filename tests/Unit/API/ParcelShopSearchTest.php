@@ -1,6 +1,7 @@
 <?php
 
 use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelShopSearchRequest;
+use Invertus\dpdBalticsApi\Factory\APIParamsFactory;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ParcelShopSearchFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
@@ -10,19 +11,20 @@ class ParcelShopSearchTest extends TestCase
 
     public function testParcelShopSearch()
     {
-        $username = getenv('DPD_USERNAME');
-        $password = getenv('DPD_PASSWORD');
         $countryIso = 'LV';
-        $requestBody = $this->createParcelShopSearchRequest($username, $password, $countryIso);
-        $parcelShopSearchFactory = new ParcelShopSearchFactory(new NullLogger());
+        $requestBody = $this->createParcelShopSearchRequest($countryIso);
+        $parcelShopSearchFactory = new ParcelShopSearchFactory(
+            new NullLogger(),
+            new APIParamsFactory()
+        );
         $parcelShopSearch = $parcelShopSearchFactory->makeParcelShopSearch();
         $responseBody = $parcelShopSearch->parcelShopSearch($requestBody);
         $this->assertEquals($responseBody->getStatus(), 'ok');
     }
 
-    private function createParcelShopSearchRequest($username, $password, $countryIso)
+    private function createParcelShopSearchRequest($countryIso)
     {
-        $parcelShopSearchRequest = new ParcelShopSearchRequest($username, $password, $countryIso);
+        $parcelShopSearchRequest = new ParcelShopSearchRequest($countryIso);
 
         return $parcelShopSearchRequest;
     }

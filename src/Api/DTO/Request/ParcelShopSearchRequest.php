@@ -6,15 +6,6 @@ use JsonSerializable;
 
 class ParcelShopSearchRequest implements JsonSerializable
 {
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
 
     /**
      * @var string
@@ -58,51 +49,15 @@ class ParcelShopSearchRequest implements JsonSerializable
 
     /**
      * ParcelShopSearchRequest constructor.
-     * @param $username
-     * @param $password
      * @param $countryIsoCode
      * @param int $fetchGsPUDOPoint
      * @param int $retrieveOpeningHours
      */
-    public function __construct($username, $password, $countryIsoCode, $fetchGsPUDOPoint = 1, $retrieveOpeningHours = 0)
+    public function __construct($countryIsoCode, $fetchGsPUDOPoint = 1, $retrieveOpeningHours = 0)
     {
-        $this->username = $username;
-        $this->password = $password;
         $this->country = $countryIsoCode;
         $this->fetchGsPUDOPoint = $fetchGsPUDOPoint;
         $this->retrieveOpeningHours = $retrieveOpeningHours;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 
     /**
@@ -239,8 +194,6 @@ class ParcelShopSearchRequest implements JsonSerializable
     public function jsonSerialize()
     {
         $request = [
-            'username' => $this->username,
-            'password' => $this->password,
             'country' => $this->country,
             'fetchGsPUDOpoint' => $this->fetchGsPUDOPoint,
             'id' => $this->parcelShopId,
