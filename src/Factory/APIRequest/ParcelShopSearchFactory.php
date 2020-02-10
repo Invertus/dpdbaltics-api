@@ -3,7 +3,7 @@
 namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
 use Invertus\dpdBalticsApi\Api\ApiRequest;
-use Invertus\dpdBalticsApi\Api\Configuration\ApiConfig;
+use Invertus\dpdBalticsApi\Api\Configuration\ApiConfiguration;
 use Invertus\dpdBalticsApi\Api\Request\ParcelShopSearch;
 use Invertus\dpdBalticsApi\Factory\APIParamsFactoryInterface;
 use Psr\Log\LoggerInterface;
@@ -30,7 +30,7 @@ class ParcelShopSearchFactory
      */
     public function makeParcelShopSearch()
     {
-        $apiConfig = new ApiConfig();
+        $apiConfig = new ApiConfiguration();
         $httpClientFactory = new HttpClientFactory(
             $apiConfig,
             $this->APIParamsFactory->getUsername(),

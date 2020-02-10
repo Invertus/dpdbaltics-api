@@ -6,7 +6,7 @@ use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelPrintRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelPrintResponse;
-use Invertus\dpdBalticsApi\ApiConfig\DPDGroupApiConfig;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class ParcelPrint
@@ -35,7 +35,7 @@ class ParcelPrint
     {
         $serializer = new SerializerFactory();
         $response = $this->apiRequest->post(
-            DPDGroupApiConfig::SQ_PARCEL_PRINT,
+            ApiConfig::SQ_PARCEL_PRINT,
             [
                 'query' => $request->jsonSerialize(),
                 'verify' => false,

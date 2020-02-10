@@ -2,7 +2,7 @@
 
 namespace Invertus\dpdBalticsApi\Api\Configuration;
 
-interface ApiConfigInterface
+interface ApiConfigurationInterface
 {
     public function getUrl();
 }

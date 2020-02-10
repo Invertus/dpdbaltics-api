@@ -2,7 +2,7 @@
 
 namespace Invertus\dpdBalticsApi\ApiConfig;
 
-class DPDGroupApiConfig
+class ApiConfig
 {
     const TEST_URL_LV = 'https://lv.integration.dpd.eo.pl';
 
@@ -19,4 +19,9 @@ class DPDGroupApiConfig
     const SQ_COLLECTION_REQUEST = '/ws-mapper-rest/crImport_';
 
     const VERSION = '1.0.0';
+
+    public function getUrl()
+    {
+        return self::TEST_URL_LV;
+    }
 }
