@@ -4,6 +4,8 @@
 namespace Invertus\dpdBalticsApi\Factory;
 
 
+use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigurationInterface;
+
 interface APIParamsFactoryInterface
 {
 
@@ -34,4 +36,9 @@ interface APIParamsFactoryInterface
      * @return string
      */
     public function getPSVersion();
+
+    /**
+     * @return ApiConfigurationInterface
+     */
+    public function getApiConfiguration();
 }

@@ -21,7 +21,10 @@ class ClosingManifestFactory
     private $APIParamsFactory;
 
 
-    public function __construct(LoggerInterface $logger, APIParamsFactoryInterface $APIParamsFactory)
+    public function __construct(
+        LoggerInterface $logger,
+        APIParamsFactoryInterface $APIParamsFactory
+    )
     {
         $this->logger = $logger;
         $this->APIParamsFactory = $APIParamsFactory;
@@ -32,9 +35,8 @@ class ClosingManifestFactory
      */
     public function makeClosingManifest()
     {
-        $apiConfig = new ApiConfiguration();
         $httpClientFactory = new HttpClientFactory(
-            $apiConfig,
+            $this->APIParamsFactory->getApiConfiguration(),
             $this->APIParamsFactory->getUsername(),
             $this->APIParamsFactory->getPassword(),
             $this->APIParamsFactory->getModuleVersion(),

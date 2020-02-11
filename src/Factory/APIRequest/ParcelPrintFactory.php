@@ -31,9 +31,8 @@ class ParcelPrintFactory
      */
     public function makeParcelPrint()
     {
-        $apiConfig = new ApiConfiguration();
         $httpClientFactory = new HttpClientFactory(
-            $apiConfig,
+            $this->APIParamsFactory->getApiConfiguration(),
             $this->APIParamsFactory->getUsername(),
             $this->APIParamsFactory->getPassword(),
             $this->APIParamsFactory->getModuleVersion(),
