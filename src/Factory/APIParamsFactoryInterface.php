@@ -1,10 +1,6 @@
 <?php
 
-
 namespace Invertus\dpdBalticsApi\Factory;
-
-
-use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigurationInterface;
 
 interface APIParamsFactoryInterface
 {
@@ -38,7 +34,7 @@ interface APIParamsFactoryInterface
     public function getPSVersion();
 
     /**
-     * @return ApiConfigurationInterface
+     * @return String
      */
-    public function getApiConfiguration();
+    public function getUrl();
 }

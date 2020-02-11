@@ -1,11 +1,8 @@
 <?php
 
-
 namespace Invertus\dpdBalticsApi\Factory;
 
-
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfiguration;
-use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigurationInterface;
 
 class APIParamsFactory implements APIParamsFactoryInterface
 {
@@ -51,10 +48,12 @@ class APIParamsFactory implements APIParamsFactoryInterface
     }
 
     /**
-     * @return ApiConfigurationInterface
+     * @return String
      */
-    public function getApiConfiguration()
+    public function getUrl()
     {
-        return new ApiConfiguration();
+        $apiConfiguration = new ApiConfiguration();
+
+        return $apiConfiguration->getUrl();
     }
 }

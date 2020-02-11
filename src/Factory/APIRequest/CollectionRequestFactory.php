@@ -32,7 +32,7 @@ class CollectionRequestFactory
     public function makeCollectionRequest()
     {
         $httpClientFactory = new HttpClientFactory(
-            $this->APIParamsFactory->getApiConfiguration(),
+            $this->APIParamsFactory->getUrl(),
             $this->APIParamsFactory->getUsername(),
             $this->APIParamsFactory->getPassword(),
             $this->APIParamsFactory->getModuleVersion(),

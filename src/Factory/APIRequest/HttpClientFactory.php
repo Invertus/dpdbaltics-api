@@ -14,7 +14,7 @@ class HttpClientFactory
     /**
      * Config Declaration.
      */
-    private $config;
+    private $url;
     private $username;
     private $password;
     private $pluginVersion;
@@ -28,9 +28,9 @@ class HttpClientFactory
      * @param $pluginVersion
      * @param $eShopVersion
      */
-    public function __construct(ApiConfigurationInterface $config, $username, $password, $pluginVersion, $eShopVersion)
+    public function __construct($url, $username, $password, $pluginVersion, $eShopVersion)
     {
-        $this->config = $config;
+        $this->url = $url;
         $this->username = $username;
         $this->password = $password;
         $this->pluginVersion = $pluginVersion;
@@ -45,7 +45,7 @@ class HttpClientFactory
     public function getClient()
     {
         $config = [
-            'base_url' => $this->config->getUrl(),
+            'base_url' => $this->url,
             'defaults' => [
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',
