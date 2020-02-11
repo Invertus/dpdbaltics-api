@@ -4,7 +4,18 @@ namespace Invertus\dpdBalticsApi\ApiConfig;
 
 class ApiConfig
 {
-    const TEST_URL_LV = 'https://lv.integration.dpd.eo.pl';
+    const TEST_URLS = array(
+        'EE' => 'https://ee.integration.dpd.eo.pl',
+        'LV' => 'https://lv.integration.dpd.eo.pl',
+        'LT' => 'https://lt.integration.dpd.eo.pl',
+    );
+
+    const LIVE_URLS = array(
+        'EE' => 'https://integration.dpd.ee:8443',
+        'LV' => 'https://integration.dpd.lv:8443',
+        'LT' => 'https://integracijos.dpd.lt',
+    );
+
 
     const SQ_PARCEL_SHOP_SEARCH = '/ws-mapper-rest/parcelShopSearch_';
 

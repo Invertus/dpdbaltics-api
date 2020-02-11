@@ -8,6 +8,6 @@ class ApiConfiguration implements ApiConfigurationInterface
 {
     public function getUrl()
     {
-        return ApiConfig::TEST_URL_LV;
+        return ApiConfig::TEST_URLS['LV'];
     }
 }
