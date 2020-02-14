@@ -7,6 +7,7 @@ use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\CollectionRequestRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\CollectionRequestResponse;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class CollectionRequest
@@ -33,13 +34,18 @@ class CollectionRequest
      */
     public function collectionRequest(CollectionRequestRequest $request)
     {
-        $response = $this->apiRequest->post(
-            ApiConfig::SQ_COLLECTION_REQUEST,
-            [
-                'query' => $request->jsonSerialize(),
-                'verify' => false,
-            ]
-        );
+        try {
+            $response = $this->apiRequest->post(
+                ApiConfig::SQ_COLLECTION_REQUEST,
+                [
+                    'query' => $request->jsonSerialize(),
+                    'verify' => false,
+                ]
+            );
+        } catch (Exception $e) {
+            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::COLLECTION_REQUEST);
+        }
+
 
         return $response;
     }

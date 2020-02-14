@@ -9,6 +9,7 @@ use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelPrintRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ClosingManifestResponse;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelPrintResponse;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class ClosingManifest
@@ -36,13 +37,19 @@ class ClosingManifest
     public function closeManifest(ClosingManifestRequest $request)
     {
         $serializer = new SerializerFactory();
-        $response = $this->apiRequest->post(
-            ApiConfig::SQ_CLOSING_MANIFEST,
-            [
-                'query' => $request->jsonSerialize(),
-                'verify' => false,
-            ]
-        );
+
+        try {
+            $response = $this->apiRequest->post(
+                ApiConfig::SQ_CLOSING_MANIFEST,
+                [
+                    'query' => $request->jsonSerialize(),
+                    'verify' => false,
+                ]
+            );
+        } catch (Exception $e) {
+            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::CLOSING_MANIFEST);
+        }
+
         $responseBody = $serializer->deserialize($response, ClosingManifestResponse::class);
 
         return $responseBody;

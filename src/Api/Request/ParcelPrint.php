@@ -7,6 +7,7 @@ use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\ParcelPrintRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelPrintResponse;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class ParcelPrint
@@ -34,13 +35,19 @@ class ParcelPrint
     public function printParcel(ParcelPrintRequest $request)
     {
         $serializer = new SerializerFactory();
-        $response = $this->apiRequest->post(
-            ApiConfig::SQ_PARCEL_PRINT,
-            [
-                'query' => $request->jsonSerialize(),
-                'verify' => false,
-            ]
-        );
+
+        try {
+            $response = $this->apiRequest->post(
+                ApiConfig::SQ_PARCEL_PRINT,
+                [
+                    'query' => $request->jsonSerialize(),
+                    'verify' => false,
+                ]
+            );
+        } catch (Exception $e) {
+            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::PARCEL_PRINT);
+        }
+
         $responseBody = $serializer->deserialize($response, ParcelPrintResponse::class);
 
         if ($responseBody->getStatus() === null) {
