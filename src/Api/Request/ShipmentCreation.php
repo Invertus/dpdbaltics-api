@@ -4,10 +4,12 @@
 namespace Invertus\dpdBalticsApi\Api\Request;
 
 
+use Exception;
 use Invertus\dpdBalticsApi\Api\ApiRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Request\ShipmentCreationRequest;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ShipmentCreationResponse;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class ShipmentCreation
@@ -31,13 +33,23 @@ class ShipmentCreation
     public function createShipment(ShipmentCreationRequest $request)
     {
         $serializer = new SerializerFactory();
-        $response = $this->apiRequest->post(
-            ApiConfig::SQ_SHIPMENT_CREATION,
-            [
-                'query' => $request->jsonSerialize(),
-                'verify' => false,
-            ]
-        );
+
+        try {
+            $response = $this->apiRequest->post(
+                ApiConfig::SQ_SHIPMENT_CREATION,
+                [
+                    'query' => $request->jsonSerialize(),
+                    'verify' => false,
+                ]
+            );
+        } catch (Exception $e) {
+            throw new DPDBalticsAPIException(
+                'An error occurred when creating shipment',
+                DPDBalticsAPIException::SHIPMENT_CREATION,
+                $e
+            );
+        }
+
         $responseBody = $serializer->deserialize($response, ShipmentCreationResponse::class);
 
         return $responseBody;

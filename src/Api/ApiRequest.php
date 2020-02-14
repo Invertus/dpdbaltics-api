@@ -3,6 +3,7 @@
 namespace Invertus\dpdBalticsApi\Api;
 
 use Exception;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\APIRequest\HttpClientFactory;
 use Psr\Log\LoggerInterface;
 
