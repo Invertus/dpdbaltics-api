@@ -43,7 +43,11 @@ class ShipmentCreation
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::SHIPMENT_CREATION);
+            throw new DPDBalticsAPIException(
+                'An error occurred when creating shipment',
+                DPDBalticsAPIException::SHIPMENT_CREATION,
+                $e
+            );
         }
 
         $responseBody = $serializer->deserialize($response, ShipmentCreationResponse::class);

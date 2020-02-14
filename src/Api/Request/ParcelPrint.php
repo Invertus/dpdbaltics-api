@@ -45,7 +45,11 @@ class ParcelPrint
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::PARCEL_PRINT);
+            throw new DPDBalticsAPIException(
+                'An error occurred trying to print parcel label',
+                DPDBalticsAPIException::PARCEL_PRINT,
+                $e
+            );
         }
 
         $responseBody = $serializer->deserialize($response, ParcelPrintResponse::class);

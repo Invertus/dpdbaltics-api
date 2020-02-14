@@ -41,7 +41,11 @@ class ParcelShopSearch
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::PARCEL_SHOP_SEARCH);
+            throw new DPDBalticsAPIException(
+                'An error occurred trying to search for parcel shops',
+                DPDBalticsAPIException::PARCEL_SHOP_SEARCH,
+                $e
+            );
         }
 
         $responseBody = $serializer->deserialize($response, ParcelShopSearchResponse::class);

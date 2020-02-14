@@ -43,7 +43,11 @@ class CollectionRequest
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::COLLECTION_REQUEST);
+            throw new DPDBalticsAPIException(
+                'An error occurred when creating collection request',
+                DPDBalticsAPIException::COLLECTION_REQUEST,
+                $e
+            );
         }
 
 

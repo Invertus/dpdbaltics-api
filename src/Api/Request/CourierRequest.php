@@ -47,7 +47,11 @@ class CourierRequest
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::COURIER_REQUEST);
+            throw new DPDBalticsAPIException(
+                'An error occurred when creating courier request',
+                DPDBalticsAPIException::COURIER_REQUEST,
+                $e
+            );
         }
 
         return $response;

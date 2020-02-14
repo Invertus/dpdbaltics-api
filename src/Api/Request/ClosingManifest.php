@@ -47,7 +47,11 @@ class ClosingManifest
                 ]
             );
         } catch (Exception $e) {
-            throw new DPDBalticsAPIException($e->getMessage(), DPDBalticsAPIException::CLOSING_MANIFEST);
+            throw new DPDBalticsAPIException(
+                'An error occurred when closing manifest',
+                DPDBalticsAPIException::CLOSING_MANIFEST,
+                $e
+            );
         }
 
         $responseBody = $serializer->deserialize($response, ClosingManifestResponse::class);
