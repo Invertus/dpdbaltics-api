@@ -11,6 +11,7 @@ use Invertus\dpdBalticsApi\Api\DTO\Response\ClosingManifestResponse;
 use Invertus\dpdBalticsApi\Api\DTO\Response\CourierRequestResponse;
 use Invertus\dpdBalticsApi\Api\DTO\Response\ParcelPrintResponse;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
+use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\SerializerFactory;
 
 class CourierRequest
@@ -37,13 +38,21 @@ class CourierRequest
      */
     public function courierRequest(CourierRequestRequest $request)
     {
-        $response = $this->apiRequest->post(
-            ApiConfig::SQ_COURIER_REQUEST,
-            [
-                'query' => $request->jsonSerialize(),
-                'verify' => false,
-            ]
-        );
+        try {
+            $response = $this->apiRequest->post(
+                ApiConfig::SQ_COURIER_REQUEST,
+                [
+                    'query' => $request->jsonSerialize(),
+                    'verify' => false,
+                ]
+            );
+        } catch (Exception $e) {
+            throw new DPDBalticsAPIException(
+                'An error occurred when creating courier request',
+                DPDBalticsAPIException::COURIER_REQUEST,
+                $e
+            );
+        }
 
         return $response;
     }
