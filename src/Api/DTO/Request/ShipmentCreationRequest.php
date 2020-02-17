@@ -164,8 +164,8 @@ class ShipmentCreationRequest implements JsonSerializable
      * @param $numOfParcel
      * @param $parcelType
      * @param $phone
+     * @param $email
      * @param $fetchGsPUDOpoint
-     * @param $parcelShopId
      */
     public function __construct(
         $name1,
@@ -176,6 +176,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $numOfParcel,
         $parcelType,
         $phone,
+        $email,
         $fetchGsPUDOpoint
     ) {
         $this->name1 = $name1;
@@ -186,6 +187,7 @@ class ShipmentCreationRequest implements JsonSerializable
         $this->numOfParcel = $numOfParcel;
         $this->parcelType = $parcelType;
         $this->phone = $phone;
+        $this->email = $email;
         $this->fetchGsPUDOpoint = $fetchGsPUDOpoint;
     }
 
@@ -331,14 +333,6 @@ class ShipmentCreationRequest implements JsonSerializable
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     }
 
     /**
