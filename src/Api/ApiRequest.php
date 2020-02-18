@@ -14,16 +14,28 @@ class ApiRequest
      * @var HttpClientFactory
      */
     private $clientFactory;
+
     /**
      * @var LoggerInterface
      */
     private $logger;
+
+    /**
+     * @var string
+     */
     private $pluginVersion;
+
+    /**
+     * @var string
+     */
     private $eShopVersion;
 
     /**
      * ApiRequest constructor.
      * @param HttpClientFactory $clientFactory
+     * @param LoggerInterface $logger
+     * @param $pluginVersion
+     * @param $eShopVersion
      */
     public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger, $pluginVersion, $eShopVersion)
     {
