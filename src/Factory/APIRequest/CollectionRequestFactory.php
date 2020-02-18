@@ -34,11 +34,14 @@ class CollectionRequestFactory
         $httpClientFactory = new HttpClientFactory(
             $this->APIParamsFactory->getUrl(),
             $this->APIParamsFactory->getUsername(),
-            $this->APIParamsFactory->getPassword(),
+            $this->APIParamsFactory->getPassword()
+        );
+        $apiRequest = new ApiRequest(
+            $httpClientFactory,
+            $this->logger,
             $this->APIParamsFactory->getModuleVersion(),
             $this->APIParamsFactory->getPSVersion()
         );
-        $apiRequest = new ApiRequest($httpClientFactory, $this->logger);
 
         return new CollectionRequest($apiRequest);
     }

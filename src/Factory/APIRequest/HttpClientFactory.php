@@ -17,24 +17,18 @@ class HttpClientFactory
     private $url;
     private $username;
     private $password;
-    private $pluginVersion;
-    private $eShopVersion;
 
     /**
      * HttpClientFactory constructor.
-     * @param ApiConfigurationInterface $config
+     * @param $url
      * @param $username
      * @param $password
-     * @param $pluginVersion
-     * @param $eShopVersion
      */
-    public function __construct($url, $username, $password, $pluginVersion, $eShopVersion)
+    public function __construct($url, $username, $password)
     {
         $this->url = $url;
         $this->username = $username;
         $this->password = $password;
-        $this->pluginVersion = $pluginVersion;
-        $this->eShopVersion = $eShopVersion;
     }
 
     /**
@@ -52,9 +46,6 @@ class HttpClientFactory
                     'character-encoding' => 'UTF-8',
                 ],
                 'query' => [
-                    'PluginVersion' => $this->pluginVersion,
-                    'PluginLibVersion' => ApiConfig::VERSION,
-                    'EshopVersion' => $this->eShopVersion,
                     'username' => $this->username,
                     'password' => $this->password
                 ]

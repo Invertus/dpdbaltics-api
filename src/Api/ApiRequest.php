@@ -3,6 +3,7 @@
 namespace Invertus\dpdBalticsApi\Api;
 
 use Exception;
+use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\APIRequest\HttpClientFactory;
 use Psr\Log\LoggerInterface;
@@ -17,15 +18,19 @@ class ApiRequest
      * @var LoggerInterface
      */
     private $logger;
+    private $pluginVersion;
+    private $eShopVersion;
 
     /**
      * ApiRequest constructor.
      * @param HttpClientFactory $clientFactory
      */
-    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger)
+    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger, $pluginVersion, $eShopVersion)
     {
         $this->clientFactory = $clientFactory;
         $this->logger = $logger;
+        $this->pluginVersion = $pluginVersion;
+        $this->eShopVersion = $eShopVersion;
     }
 
     /**
@@ -41,6 +46,10 @@ class ApiRequest
         $response = null;
 
         try {
+            $params['query']['PluginVersion'] = $this->pluginVersion;
+            $params['query']['PluginLibVersion'] = ApiConfig::VERSION;
+            $params['query']['EshopVersion'] = $this->eShopVersion;
+
             $response = $this->clientFactory->getClient()->post($url, $params);
 
             $responseContent = $response->getBody()->getContents();

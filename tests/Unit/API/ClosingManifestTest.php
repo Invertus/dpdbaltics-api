@@ -51,6 +51,7 @@ class ClosingManifestTest extends TestCase
             1,
             'D-B2C',
             '123456',
+            'test@gmail.com',
             1
         );
 
