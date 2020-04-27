@@ -196,16 +196,19 @@ class ParcelShopSearchRequest implements JsonSerializable
         $request = [
             'country' => $this->country,
             'fetchGsPUDOpoint' => $this->fetchGsPUDOPoint,
-            'id' => $this->parcelShopId,
             'street' => $this->street,
             'city' => $this->city,
             'pcode' => $this->pCode,
             'retrieveOpeningHours' => $this->retrieveOpeningHours
-            ];
+        ];
 
         if ($this->company) {
             $request['company'] = $this->company;
         }
+        if ( $this->parcelShopId) {
+            $request['id'] =  $this->parcelShopId;
+        }
+
 
         return $request;
     }
