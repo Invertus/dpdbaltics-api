@@ -209,7 +209,6 @@ class ParcelShopSearchRequest implements JsonSerializable
             $request['id'] =  $this->parcelShopId;
         }
 
-
         return $request;
     }
 }
