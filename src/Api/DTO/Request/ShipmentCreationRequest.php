@@ -247,6 +247,11 @@ class ShipmentCreationRequest implements JsonSerializable
         return $this->parcelType;
     }
 
+    public function setParcelType($parcelType)
+    {
+        $this->parcelType = $parcelType;
+    }
+
     /**
      * @return string
      */
