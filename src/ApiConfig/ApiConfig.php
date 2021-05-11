@@ -11,9 +11,9 @@ class ApiConfig
     );
 
     const LIVE_URLS = array(
-        'EE' => 'https://integration.dpd.ee:8443',
-        'LV' => 'https://integration.dpd.lv:8443',
-        'LT' => 'https://integration.dpd.lt:8443',
+        'EE' => 'https://integration.dpd.ee',
+        'LV' => 'https://integration.dpd.lv',
+        'LT' => 'https://integration.dpd.lt',
     );
 
 
