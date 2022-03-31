@@ -4,6 +4,7 @@
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class CollectionRequestRequest implements JsonSerializable
@@ -375,7 +376,7 @@ class CollectionRequestRequest implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $request = [
             'cname' => $this->getCname(),
             'cname1' => $this->getCname1(),
             'cname2' => $this->getCname2(),
@@ -397,5 +398,7 @@ class CollectionRequestRequest implements JsonSerializable
             'rphone' => $this->getRphone(),
             'remail' => $this->getRemail(),
         ];
+
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }

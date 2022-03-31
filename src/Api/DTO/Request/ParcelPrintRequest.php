@@ -4,6 +4,7 @@
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class ParcelPrintRequest implements JsonSerializable
@@ -100,11 +101,13 @@ class ParcelPrintRequest implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $request =  [
             'parcels' => $this->getParcels(),
             'printType' => $this->getPrintType(),
             'printFormat' => $this->getPrintFormat(),
             'printPosition' => $this->getPrintPosition()
         ];
+
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }

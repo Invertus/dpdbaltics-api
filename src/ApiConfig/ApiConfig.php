@@ -13,7 +13,7 @@ class ApiConfig
     const LIVE_URLS = array(
         'EE' => 'https://integration.dpd.ee',
         'LV' => 'https://integration.dpd.lv',
-        'LT' => 'https://integration.dpd.lt',
+        'LT' => 'https://integracijos.dpd.lt',
     );
 
 

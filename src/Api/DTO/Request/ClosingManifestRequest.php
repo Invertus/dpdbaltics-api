@@ -2,11 +2,11 @@
 
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class ClosingManifestRequest implements JsonSerializable
 {
-
     /**
      * @var string
      */
@@ -76,10 +76,12 @@ class ClosingManifestRequest implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $request = [
             'date' => $this->getDate(),
             'type' => $this->getType(),
             'format' => $this->getFormat(),
         ];
+
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }
