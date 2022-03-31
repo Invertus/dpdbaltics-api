@@ -4,6 +4,7 @@
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class CourierRequestRequest implements JsonSerializable
@@ -292,7 +293,7 @@ class CourierRequestRequest implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $request = [
             'orderNr' => $this->getOrderNr(),
             'payerId' => $this->getPayerId(),
             'senderName' => $this->getSenderName(),
@@ -310,5 +311,7 @@ class CourierRequestRequest implements JsonSerializable
             'palletsCount' => $this->getPalletsCount(),
             'nonStandard' => $this->getNonStandard(),
         ];
+
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }

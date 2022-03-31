@@ -2,6 +2,7 @@
 
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class ParcelShopSearchRequest implements JsonSerializable
@@ -209,6 +210,6 @@ class ParcelShopSearchRequest implements JsonSerializable
             $request['id'] =  $this->parcelShopId;
         }
 
-        return $request;
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "invertus/dpdBalticsApi",
+  "name": "invertus/dpdbaltics-api",
   "config": {
     "platform": {
       "php": "5.6"

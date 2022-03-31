@@ -4,6 +4,7 @@
 namespace Invertus\dpdBalticsApi\Api\DTO\Request;
 
 
+use Invertus\dpdBalticsApi\Utilities\ArrayUtility;
 use JsonSerializable;
 
 class ShipmentCreationRequest implements JsonSerializable
@@ -585,7 +586,7 @@ class ShipmentCreationRequest implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return [
+        $request = [
             'name1' => $this->name1,
             'street' => $this->street,
             'city' => $this->city,
@@ -616,5 +617,7 @@ class ShipmentCreationRequest implements JsonSerializable
             'timeframe_to' => $this->getTimeFrameTo(),
             'shipment_id' => $this->getShipmentId(),
         ];
+
+        return ArrayUtility::removeKeysWithEmptyValues($request);
     }
 }
