@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class ArrayUtilityTest extends TestCase
 {
     /**
-     * @dataProvider getTestaleArray
+     * @dataProvider getTestableArray
      */
     public function test_if_array_keys_removed_correctly($testableArray, $expectedResult)
     {
@@ -19,9 +19,9 @@ class ArrayUtilityTest extends TestCase
     /**
      * @return Generator
      */
-    public function getTestaleArray()
+    public function getTestableArray()
     {
-        yield 'Ofline order agent valid type' => [
+        yield 'Test if array keys removed correctly ' => [
             [
                 'string' => 'value',
                 'integer' => 10,
