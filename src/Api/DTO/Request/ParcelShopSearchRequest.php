@@ -200,15 +200,10 @@ class ParcelShopSearchRequest implements JsonSerializable
             'street' => $this->street,
             'city' => $this->city,
             'pcode' => $this->pCode,
-            'retrieveOpeningHours' => $this->retrieveOpeningHours
+            'retrieveOpeningHours' => $this->retrieveOpeningHours,
+            'company' => $this->company,
+            'id' => $this->parcelShopId
         ];
-
-        if ($this->company) {
-            $request['company'] = $this->company;
-        }
-        if ( $this->parcelShopId) {
-            $request['id'] =  $this->parcelShopId;
-        }
 
         return ArrayUtility::removeKeysWithEmptyValues($request);
     }
