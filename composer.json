@@ -25,7 +25,9 @@
     "ext-json": "*",
     "monolog/monolog": "^1.25",
     "psr/log": "^1.1",
-    "phpdocumentor/reflection-docblock": "^3.0|^4.0"
+    "phpdocumentor/reflection-docblock": "^3.0|^4.0",
+    "apimatic/jsonmapper": "^2.0",
+    "apimatic/unirest-php": "^2.1"
   },
   "require-dev": {
     "phpunit/phpunit": "*",

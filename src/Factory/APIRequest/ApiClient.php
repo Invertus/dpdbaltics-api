@@ -2,6 +2,8 @@
 
 namespace Invertus\dpdBalticsApi\Factory\APIRequest;
 
+use Bolt\Module\Api\Environment;
+use Bolt\Module\Api\Http\HttpResponse;
 use Invertus\dpdBalticsApi\Api\Configuration\ApiConfigurationInterface;
 use GuzzleHttp\Client;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
@@ -9,7 +11,7 @@ use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
 /**
  * Class HttpClientFactory
  */
-class HttpClientFactory
+class ApiClient
 {
     /**
      * Config Declaration.
@@ -31,27 +33,28 @@ class HttpClientFactory
         $this->password = $password;
     }
 
-    /**
-     * Gets Guzzle HTTP Client.
-     *
-     * @return Client
-     */
-    public function getClient()
+    public function getUrl()
     {
-        $config = [
-            'base_url' => $this->url,
-            'defaults' => [
-                'headers' => [
-                    'Content-Type' => 'application/x-www-form-urlencoded',
-                    'character-encoding' => 'UTF-8',
-                ],
-                'query' => [
-                    'username' => $this->username,
-                    'password' => $this->password
-                ]
-            ],
-        ];
+        return $this->url;
+    }
 
-        return new Client($config);
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function getTimeout()
+    {
+        return 20;
+    }
+
+    public function isValidResponse(HttpResponse $response)
+    {
+        return $response->getStatusCode() >= 200 && $response->getStatusCode() < 300;
     }
 }
