@@ -52,6 +52,6 @@ class SerializerFactory implements SerializeFactoryInterface
      */
     public function deserialize($responseObject, $className)
     {
-        return $this->normalizer->denormalize(json_decode($responseObject), $className);
+        return $this->normalizer->denormalize($responseObject, $className);
     }
 }

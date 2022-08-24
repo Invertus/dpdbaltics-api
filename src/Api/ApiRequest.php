@@ -57,8 +57,6 @@ class ApiRequest
      */
     public function post($url, $params = [])
     {
-        $response = null;
-
         $queryUrl = ApiHelper::cleanUrl($this->apiClient->getUrl() . $url);
         $query = array_merge(
             $params['query'], [
@@ -77,41 +75,31 @@ class ApiRequest
 
         // Set request timeout
         Request::timeout($this->apiClient->getTimeout());
-
-//            $httpRequest = new HttpRequest(HttpMethod::POST, $headers, $queryUrl, $encodedBody);
+        Request::verifyPeer(false);
         // and invoke the API call request to fetch the response
         try {
             $response = Request::post($queryUrl, $headers);
         } catch (\Unirest\Exception $exception) {
-            throw new ApiException(sprintf('Api exception. Exception message: (%s). Exception code: (%s)', $exception->getMessage(), (int) $exception->getCode()));
+            $this->logger->critical(
+                $exception->getMessage(),
+                [
+                    'request' => $url,
+                ]
+            );
+            throw $exception;
         }
-        $httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
-        $httpContext = new HttpContext($httpRequest, $httpResponse);
+        $responseContent = $response->body;
 
-        if (!$this->apiClient->isValidResponse($httpResponse)) {
-//                $this->logger->critical(
-//                    $exception->getMessage(),
-//                    [
-//                        'request' => $url,
-//                    ]
-//                );
-            throw new Exception('todo');
-        }
-
-        //NOTE adding wrapping around response because managing multiple identical Response classes is causing errors.
-        if (!isset($response->body->{self::WRAP_SINGULAR_KEY})) {
-            $body = new \stdClass();
-            $body->{self::WRAP_SINGULAR_KEY} = $response->body;
-
-            $response->body = $body;
+        if (isset($responseContent->status) && $responseContent->status === 'err') {
+            $this->logger->error(
+                $responseContent->errlog,
+                [
+                    'request' => $queryUrl,
+                ]
+            );
         }
 
-        $mapper = $this->getJsonMapper();
-
-        $deserializedResponse = $mapper->mapClass($response->body, AuthorizeCardResponse::class);
-
-        return ApiResponse::createFromContext($deserializedResponse, $httpContext);
-
+        return $responseContent ?: [];
     }
 
     /**
