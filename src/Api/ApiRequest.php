@@ -2,10 +2,8 @@
 
 namespace Invertus\dpdBalticsApi\Api;
 
-use Exception;
 use Invertus\dpdBalticsApi\Api\Helper\ApiHelper;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
-use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
 use Invertus\dpdBalticsApi\Factory\APIRequest\ApiClient;
 use Psr\Log\LoggerInterface;
 use Unirest\Request;
@@ -100,26 +98,5 @@ class ApiRequest
         }
 
         return $responseContent ?: [];
-    }
-
-    /**
-     * API Request Get Method.
-     *
-     * @param $url
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function get($url, $params = [])
-    {
-        $response = null;
-
-        try {
-            $response = $this->apiClient->getClient()->get($url, $params);
-
-            return $response ?: [];
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
     }
 }
