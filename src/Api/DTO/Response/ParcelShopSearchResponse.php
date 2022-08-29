@@ -19,7 +19,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     private $errLog;
 
     /**
-     * @param ParcelShop[]|null
+     * @param \Invertus\dpdBalticsApi\Api\DTO\Object\ParcelShop[]|null
      */
     private $parcelShops = [];
 
@@ -56,7 +56,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @return ParcelShop[]|null
+     * @return \Invertus\dpdBalticsApi\Api\DTO\Object\ParcelShop[]|null
      */
     public function getParcelShops()
     {
@@ -64,7 +64,7 @@ class ParcelShopSearchResponse implements JsonSerializable
     }
 
     /**
-     * @param ParcelShop[]|null $parcelShops
+     * @param \Invertus\dpdBalticsApi\Api\DTO\Object\ParcelShop[]|null $parcelShops
      */
     public function setParcelShops($parcelShops)
     {
