@@ -31,7 +31,7 @@ class CourierRequestFactory
      */
     public function makeCourierRequest()
     {
-        $httpClientFactory = new HttpClientFactory(
+        $httpClientFactory = new ApiClient(
             $this->APIParamsFactory->getUrl(),
             $this->APIParamsFactory->getUsername(),
             $this->APIParamsFactory->getPassword()

@@ -31,7 +31,7 @@ class CollectionRequestFactory
      */
     public function makeCollectionRequest()
     {
-        $httpClientFactory = new HttpClientFactory(
+        $httpClientFactory = new ApiClient(
             $this->APIParamsFactory->getUrl(),
             $this->APIParamsFactory->getUsername(),
             $this->APIParamsFactory->getPassword()

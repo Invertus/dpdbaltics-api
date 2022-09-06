@@ -77,7 +77,7 @@ class ParcelShop implements JsonSerializable
     private $coordinateZ;
 
     /**
-     * @var OpeningHours[]
+     * @var \Invertus\dpdBalticsApi\Api\DTO\Object\OpeningHours[]
      */
     private $openingHours;
 
@@ -306,7 +306,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @return OpeningHours[]
+     * @return \Invertus\dpdBalticsApi\Api\DTO\Object\OpeningHours[]
      */
     public function getOpeningHours()
     {
@@ -314,7 +314,7 @@ class ParcelShop implements JsonSerializable
     }
 
     /**
-     * @param OpeningHours[] $openingHours
+     * @param \Invertus\dpdBalticsApi\Api\DTO\Object\OpeningHours[] $openingHours
      */
     public function setOpeningHours(array $openingHours)
     {

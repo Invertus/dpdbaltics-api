@@ -2,18 +2,18 @@
 
 namespace Invertus\dpdBalticsApi\Api;
 
-use Exception;
+use Invertus\dpdBalticsApi\Api\Helper\ApiHelper;
 use Invertus\dpdBalticsApi\ApiConfig\ApiConfig;
-use Invertus\dpdBalticsApi\Exception\DPDBalticsAPIException;
-use Invertus\dpdBalticsApi\Factory\APIRequest\HttpClientFactory;
+use Invertus\dpdBalticsApi\Factory\APIRequest\ApiClient;
 use Psr\Log\LoggerInterface;
+use Unirest\Request;
 
 class ApiRequest
 {
     /**
-     * @var HttpClientFactory
+     * @var ApiClient
      */
-    private $clientFactory;
+    private $apiClient;
 
     /**
      * @var LoggerInterface
@@ -32,14 +32,14 @@ class ApiRequest
 
     /**
      * ApiRequest constructor.
-     * @param HttpClientFactory $clientFactory
+     * @param ApiClient $apiClient
      * @param LoggerInterface $logger
      * @param $pluginVersion
      * @param $eShopVersion
      */
-    public function __construct(HttpClientFactory $clientFactory, LoggerInterface $logger, $pluginVersion, $eShopVersion)
+    public function __construct(ApiClient $apiClient, LoggerInterface $logger, $pluginVersion, $eShopVersion)
     {
-        $this->clientFactory = $clientFactory;
+        $this->apiClient = $apiClient;
         $this->logger = $logger;
         $this->pluginVersion = $pluginVersion;
         $this->eShopVersion = $eShopVersion;
@@ -55,27 +55,29 @@ class ApiRequest
      */
     public function post($url, $params = [])
     {
-        $response = null;
+        $queryUrl = ApiHelper::cleanUrl($this->apiClient->getUrl() . $url);
+        $query = array_merge(
+            $params['query'], [
+            'username' => $this->apiClient->getUsername(),
+            'password' => $this->apiClient->getPassword(),
+        ]);
+        $queryUrl = $queryUrl . '?' . http_build_query($query);
 
+        $headers = [
+            'PluginVersion' => $this->pluginVersion,
+            'PluginLibVersion' => ApiConfig::VERSION,
+            'EshopVersion' => $this->eShopVersion,
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'character-encoding' => 'UTF-8',
+        ];
+
+        // Set request timeout
+        Request::timeout($this->apiClient->getTimeout());
+        Request::verifyPeer(false);
+        // and invoke the API call request to fetch the response
         try {
-            $params['query']['PluginVersion'] = $this->pluginVersion;
-            $params['query']['PluginLibVersion'] = ApiConfig::VERSION;
-            $params['query']['EshopVersion'] = $this->eShopVersion;
-
-            $response = $this->clientFactory->getClient()->post($url, $params);
-
-            $responseContent = $response->getBody()->getContents();
-            $content = json_decode($responseContent);
-            if (isset($content->status) && $content->status === 'err') {
-                $this->logger->error(
-                    $content->errlog,
-                    [
-                        'request' => $response->getEffectiveUrl(),
-                    ]
-                );
-            }
-            return $responseContent ?: [];
-        } catch (Exception $exception) {
+            $response = Request::post($queryUrl, $headers);
+        } catch (\Unirest\Exception $exception) {
             $this->logger->critical(
                 $exception->getMessage(),
                 [
@@ -84,26 +86,17 @@ class ApiRequest
             );
             throw $exception;
         }
-    }
+        $responseContent = $response->body;
 
-    /**
-     * API Request Get Method.
-     *
-     * @param $url
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function get($url, $params = [])
-    {
-        $response = null;
-
-        try {
-            $response = $this->clientFactory->getClient()->get($url, $params);
-
-            return $response ?: [];
-        } catch (\Exception $exception) {
-            throw $exception;
+        if (isset($responseContent->status) && $responseContent->status === 'err') {
+            $this->logger->error(
+                $responseContent->errlog,
+                [
+                    'request' => $queryUrl,
+                ]
+            );
         }
+
+        return $responseContent ?: [];
     }
 }
