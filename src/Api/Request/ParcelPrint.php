@@ -37,7 +37,7 @@ class ParcelPrint
         $serializer = new SerializerFactory();
 
         try {
-            $response = $this->apiRequest->post(
+            $response['pdf'] = $this->apiRequest->post(
                 ApiConfig::SQ_PARCEL_PRINT,
                 [
                     'query' => $request->jsonSerialize(),
