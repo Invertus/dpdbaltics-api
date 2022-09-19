@@ -52,15 +52,8 @@ class ParcelPrint
             );
         }
 
-        if (!is_array($response)) {
-            $decodedResponse = json_decode($response);
-            if (!isset($decodedResponse->status)) {
-                $decodedResponse['pdf'] = $response;
-                $responseBody = $serializer->deserialize($decodedResponse['pdf'], ParcelPrintResponse::class);
-            } else {
-                $responseBody = $serializer->deserialize($response, ParcelPrintResponse::class);
-            }
-        }
+        $responseBody = $serializer->deserialize(is_object($response) ? $response : json_decode($response),
+            ParcelPrintResponse::class);
 
         if ($responseBody->getStatus() === null) {
             $responseBody->setStatus('ok');
