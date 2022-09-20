@@ -52,7 +52,8 @@ class ParcelPrint
             );
         }
 
-        $responseBody = $serializer->deserialize($response, ParcelPrintResponse::class);
+        $responseBody = $serializer->deserialize(is_object($response) ? $response : json_decode($response),
+            ParcelPrintResponse::class);
 
         if ($responseBody->getStatus() === null) {
             $responseBody->setStatus('ok');
