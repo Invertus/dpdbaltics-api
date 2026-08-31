@@ -90,6 +90,21 @@ class CourierRequestRequest implements JsonSerializable
      */
     private $palletsCount;
 
+    /**
+     * @var string
+     */
+    private $pickupDate;
+
+    /**
+     * @var string
+     */
+    private $pickupTimeFrom;
+
+    /**
+     * @var string
+     */
+    private $pickupTimeTo;
+
 
     /**
      * CourierRequestRequest constructor.
@@ -289,6 +304,54 @@ class CourierRequestRequest implements JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getPickupDate()
+    {
+        return $this->pickupDate;
+    }
+
+    /**
+     * @param string $pickupDate
+     */
+    public function setPickupDate($pickupDate)
+    {
+        $this->pickupDate = $pickupDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPickupTimeFrom()
+    {
+        return $this->pickupTimeFrom;
+    }
+
+    /**
+     * @param string $pickupTimeFrom
+     */
+    public function setPickupTimeFrom($pickupTimeFrom)
+    {
+        $this->pickupTimeFrom = $pickupTimeFrom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPickupTimeTo()
+    {
+        return $this->pickupTimeTo;
+    }
+
+    /**
+     * @param string $pickupTimeTo
+     */
+    public function setPickupTimeTo($pickupTimeTo)
+    {
+        $this->pickupTimeTo = $pickupTimeTo;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()
@@ -306,6 +369,9 @@ class CourierRequestRequest implements JsonSerializable
             'senderPhone' => $this->getSenderPhone(),
             'senderWorkUntil' => $this->getSenderWorkUntil(),
             'pickupTime' => $this->getPickupTime(),
+            'pickupDate' => $this->getPickupDate(),
+            'pickupTimeFrom' => $this->getPickupTimeFrom(),
+            'pickupTimeTo' => $this->getPickupTimeTo(),
             'weight' => $this->getWeight(),
             'parcelsCount' => $this->getParcelsCount(),
             'palletsCount' => $this->getPalletsCount(),
